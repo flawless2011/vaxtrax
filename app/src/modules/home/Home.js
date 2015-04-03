@@ -1,1 +1,6 @@
-angular.module('home',['ngMaterial']);
+(function() {
+    'use strict';
+    
+    angular.module('home', []);
+    
+})();
