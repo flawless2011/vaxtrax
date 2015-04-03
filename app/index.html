@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" >
+  <head>
+    <title>Vax Traxx</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,700'>
+    <link rel="stylesheet" href="./bower_components/angular-material/angular-material.css"/>
+    <link rel="stylesheet" href="assets/app.css"/>
+  </head>
+
+  <body ng-app="vtApp" layout="column" ng-controller="UsersListController as ul">
+
+    <md-toolbar layout="row">
+      <md-button class="menu" hide-gt-sm ng-click="ul.toggleList()" aria-label="Show User List">
+        <md-icon md-svg-icon="menu" ></md-icon>
+      </md-button>
+      <h1>VaxTraxx 0.0.1</h1>
+    </md-toolbar>
+    <div ng-view></div>
+
+    <script src="./bower_components/angular/angular.js"></script>
+    <script src="./bower_components/angular-animate/angular-animate.js"></script>
+    <script src="./bower_components/angular-aria/angular-aria.js"></script>
+    <script src="./bower_components/angular-material/angular-material.js"></script>
+    <script src="./bower_components/angular-route/angular-route.js"></script>
+
+    <script src="./src/app.js"></script>
+    <script src="./src/home/Home.js"></script>  
+    <script src="./src/home/HomeController.js"></script>
+    <script src="./src/users/Users.js"></script>
+    <script src="./src/users/UsersListController.js"></script>
+    <script src="./src/users/UsersDataservice.js"></script>
+
+  </body>
+</html>
