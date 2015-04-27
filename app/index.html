@@ -9,7 +9,9 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
 
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,700'>
-    <link rel="stylesheet" href="./bower_components/angular-material/angular-material.css"/>
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+    <!-- endbower -->
     <link rel="stylesheet" href="styles/app.css"/>
   </head>
 
@@ -40,13 +42,16 @@
       </md-sidenav>
 
       <md-content flex id="content" ng-view></md-content>
+
     </div>
 
-    <script src="./bower_components/angular/angular.js"></script>
-    <script src="./bower_components/angular-animate/angular-animate.js"></script>
-    <script src="./bower_components/angular-aria/angular-aria.js"></script>
-    <script src="./bower_components/angular-material/angular-material.js"></script>
-    <script src="./bower_components/angular-route/angular-route.js"></script>
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <!-- endbower -->
 
     <script src="./src/app.js"></script>
     <script src="./src/modules/main/Main.js"></script>
