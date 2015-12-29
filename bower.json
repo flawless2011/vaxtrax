@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.2.0",
-    "paper-elements": "Polymer/paper-elements"
+    "Materialize": "materialize#~0.97.5"
   }
 }
