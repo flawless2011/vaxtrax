@@ -20,8 +20,10 @@
     "rewriteTsconfig": true
   },
   "files": [
-    "./app/app.component.ts",
     "./app/boot.ts",
+    "./app/components/app/app.component.ts",
+    "./app/components/home/home.component.ts",
+    "./app/components/welcome/welcome.component.ts",
     "./node_modules/angular2/animate.d.ts",
     "./node_modules/angular2/animate/testing.d.ts",
     "./node_modules/angular2/bootstrap_static.d.ts",
