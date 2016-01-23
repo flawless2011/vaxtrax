@@ -6,7 +6,7 @@
   "bundle": "typings/tsd.d.ts",
   "installed": {
     "gapi.auth2/gapi.auth2.d.ts": {
-      "commit": "15e8b662535b2c6b84dc9d5ff4d3eb9371683630"
+      "commit": "64e0ede379b789efe9dc22a1d3c69892d3f639ed"
     },
     "gapi/gapi.d.ts": {
       "commit": "15e8b662535b2c6b84dc9d5ff4d3eb9371683630"

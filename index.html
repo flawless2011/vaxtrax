@@ -13,11 +13,12 @@
     <title>Vaxtrax</title>
 
     <!-- 1. Load libraries -->
-    <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
-    <script src="node_modules/systemjs/dist/system.src.js"></script>
-    <script src="node_modules/rxjs/bundles/Rx.js"></script>
-    <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
-    <script src="node_modules/angular2/bundles/router.dev.js"></script>
+    <script src="lib/angular2-polyfills.js"></script>
+    <script src="lib/system.src.js"></script>
+    <script src="lib/Rx.js"></script>
+    <script src="lib/angular2.dev.js"></script>
+    <script src="lib/router.dev.js"></script>
+    <script src="https://apis.google.com/js/platform.js"></script>
 
     <!-- 2. Configure SystemJS -->
     <script>
@@ -26,7 +27,13 @@
           app: {
             format: 'register',
             defaultExtension: 'js'
+          },
+          'gapi.auth2': {
+            format: 'cjs'
           }
+        },
+        map: {
+          'gapi.auth2': 'https://apis.google.com/js/platform.js'
         }
       });
       System.import('app/boot')
@@ -35,14 +42,13 @@
 
   </head>
   <base href="/">
-  
+
   <!-- 3. Display the application -->
   <body>
     <vaxtrax>Loading...</vaxtrax>
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="app/bower_components/Materialize/dist/js/materialize.min.js"></script>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
   </body>
 
 </html>
