@@ -11,6 +11,7 @@
   },
   "filesGlob": [
     "./app/**/*.ts",
+    "./typings/**/*.d.ts",
     "./node_modules/**/*.d.ts"
   ],
   "exclude": [
@@ -24,6 +25,9 @@
     "./app/components/app/app.component.ts",
     "./app/components/home/home.component.ts",
     "./app/components/welcome/welcome.component.ts",
+    "./typings/gapi.auth2/gapi.auth2.d.ts",
+    "./typings/gapi/gapi.d.ts",
+    "./typings/tsd.d.ts",
     "./node_modules/angular2/animate.d.ts",
     "./node_modules/angular2/animate/testing.d.ts",
     "./node_modules/angular2/bootstrap_static.d.ts",
