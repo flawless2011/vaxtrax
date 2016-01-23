@@ -1,0 +1,15 @@
+{
+  "version": "v4",
+  "repo": "flawless2011/DefinitelyTyped",
+  "ref": "master",
+  "path": "typings",
+  "bundle": "typings/tsd.d.ts",
+  "installed": {
+    "gapi.auth2/gapi.auth2.d.ts": {
+      "commit": "15e8b662535b2c6b84dc9d5ff4d3eb9371683630"
+    },
+    "gapi/gapi.d.ts": {
+      "commit": "15e8b662535b2c6b84dc9d5ff4d3eb9371683630"
+    }
+  }
+}
