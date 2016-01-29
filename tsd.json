@@ -1,6 +1,6 @@
 {
   "version": "v4",
-  "repo": "flawless2011/DefinitelyTyped",
+  "repo": "DefinitelyTyped/DefinitelyTyped",
   "ref": "master",
   "path": "typings",
   "bundle": "typings/tsd.d.ts",
