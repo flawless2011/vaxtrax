@@ -5,14 +5,14 @@
     <div class="row center">
       <h5 class="header col s12 light">A vaccination tracker for the whole family</h5>
     </div>
-    <div class="row center">
-      <div id="create-account-btn" class="btn-large waves-effect waves-light orange darken-4" (click)="onStartClick()">Get Started</div>
+    <div class="row center" *ngIf="userSignedIn">
+      Sign in to get started.
     </div>
     <div class="row center">
-      or
+      <div id="my-signin2" class="social-btn"></div>
     </div>
     <div class="row center">
-      <div id="my-signin2" on-data-onsuccess="onGoogleSignin()"></div>
+      <div id="create-account-btn" class="btn-large waves-effect waves-light orange darken-4" *ngIf="!userSignedIn" (click)="onStartClick()">Let's Go!</div>
     </div>
     <br><br>
   </div>

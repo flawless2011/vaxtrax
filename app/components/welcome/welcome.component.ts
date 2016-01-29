@@ -8,16 +8,20 @@ import {Router} from 'angular2/router';
 })
 export class WelcomeComponent implements AfterContentInit {
 
+  public userSignedIn: boolean = false;
+
   public onGoogleSignin = (googleUser: gapi.auth2.GoogleUser): void => {
     // todo
-    console.log('I am ' + googleUser.getBasicProfile().getName());
+    if(googleUser) {
+      this.userSignedIn = true;
+    }
+    console.log('I am ' + googleUser);
   };
 
   private _router: Router;
   constructor(router: Router) {
     this._router = router;
   }
-
 
   public ngAfterContentInit(): void {
     this.onRender();
