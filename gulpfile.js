@@ -15,7 +15,13 @@ gulp.task('clean', function () {
 
 // copy static assets - i.e. non TypeScript compiled source
 gulp.task('copy:assets', ['clean'], function() {
-  return gulp.src(['app/**/*', 'index.html', 'app/**/*.ts'], { base : './' })
+  return gulp.src(['app/**/*', 'index.html', 'app/**/*.ts', 'server.js'], { base : './' })
+    .pipe(gulp.dest('dist'))
+});
+
+// copy static assets - i.e. non TypeScript compiled source
+gulp.task('copy:assetsRel', ['clean'], function() {
+  return gulp.src(['app/**/*', 'index.html', '!app/**/*.ts', 'server.js'], { base : './' })
     .pipe(gulp.dest('dist'))
 });
 
@@ -31,13 +37,12 @@ gulp.task('copy:libs', ['clean'], function() {
     .pipe(gulp.dest('dist/lib'))
 });
 
-// linting
+// lint TypeScript
 gulp.task('tslint', function() {
   return gulp.src('app/**/*.ts')
     .pipe(tslint())
     .pipe(tslint.report('verbose'));
 });
-
 
 // TypeScript compile
 gulp.task('compile', ['clean'], function () {
@@ -69,5 +74,6 @@ gulp.task('serve', ['build'], function() {
 });
 
 gulp.task('build', ['tslint', 'compile', 'copy:libs', 'copy:assets']);
+gulp.task('release', ['tslint', 'compile', 'copy:libs', 'copy:assetsRel']);
 gulp.task('buildAndReload', ['build'], reload);
 gulp.task('default', ['build']);
