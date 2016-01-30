@@ -33,7 +33,7 @@ export class WelcomeComponent implements AfterContentInit {
   }
 
   public onRender(): void {
-    gapi.signin2.render('my-signin2', {
+    gapi.signin2.render('google-signin', {
         'scope': 'https://www.googleapis.com/auth/plus.login',
         'width': 250,
         'height': 50,
