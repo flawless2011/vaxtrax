@@ -6,13 +6,13 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.13.4",
-    "angular2": "^2.0.0-beta.0",
+    "angular2": "^2.0.0-beta.8",
     "systemjs": "^0.19.8",
     "es6-promise": "^3.0.2",
     "es6-shim": "^0.33.13",
     "reflect-metadata": "0.1.2",
-    "rxjs": "5.0.0-beta.0",
-    "zone.js": "^0.5.10"
+    "rxjs": "^5.0.0-beta.2",
+    "zone.js": "^0.5.15"
   },
   "devDependencies": {
     "bower": "latest",
@@ -32,5 +32,8 @@
     "tslint": "tslint -c tslint.json app/**/*.ts",
     "start": "gulp serve",
     "postinstall": "concurrent \"bower install\" \"tsd install\" "
+  },
+  "engines": {
+    "node": ">=4.2.3"
   }
 }
