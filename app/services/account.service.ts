@@ -16,7 +16,7 @@ export class AccountService {
     let options = new RequestOptions({headers: headers});
 
     return this.http.post(this.ADD_ACCOUNT_URL, body, options)
-                    .map(res => <Account> res.json().data)
+                    .map(res => <Account> res.json())
                     .catch(this.handleError);
   }
 

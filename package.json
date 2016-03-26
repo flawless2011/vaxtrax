@@ -24,14 +24,14 @@
     "gulp-tslint": "^3.6.0",
     "gulp-typescript": "^2.8.0",
     "tsconfig-glob": "^0.3.3",
-    "tsd": "^0.6.5",
+    "typings": "^0.7.9",
     "tslint": "^3.2.1",
     "typescript": "^1.7.3"
   },
   "scripts": {
     "tslint": "tslint -c tslint.json app/**/*.ts",
     "start": "gulp serve",
-    "postinstall": "concurrent \"bower install\" \"tsd install\" "
+    "postinstall": "concurrent \"bower install\" \"typings install\" "
   },
   "engines": {
     "node": ">=4.2.3"

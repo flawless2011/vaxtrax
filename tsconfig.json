@@ -12,7 +12,7 @@
   },
   "filesGlob": [
     "./app/**/*.ts",
-    "./typings/**/*.d.ts",
+    "./typings/browser.d.ts",
     "./node_modules/angular2/*.d.ts",
     "./node_modules/rxjs/**/*.d.ts",
     "./node_modules/reflect-metadata/**/*.d.ts"
@@ -27,11 +27,10 @@
     "./app/components/welcome/authResult.ts",
     "./app/components/welcome/welcome.component.ts",
     "./app/models/account.ts",
+    "./app/models/immunization.ts",
     "./app/models/person.ts",
     "./app/services/account.service.ts",
-    "./typings/gapi.auth2/gapi.auth2.d.ts",
-    "./typings/gapi/gapi.d.ts",
-    "./typings/tsd.d.ts",
+    "./typings/browser.d.ts",
     "./node_modules/angular2/animate.d.ts",
     "./node_modules/angular2/bootstrap_static.d.ts",
     "./node_modules/angular2/bootstrap.d.ts",

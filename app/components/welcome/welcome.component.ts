@@ -1,8 +1,5 @@
-/// <reference path="../../../typings/gapi.auth2/gapi.auth2.d.ts" />
 import {Component, AfterContentInit} from 'angular2/core';
 import {Router} from 'angular2/router';
-import {AccountService} from '../../services/account.service';
-import {Account} from '../../models/account';
 
 @Component({
   selector: 'vaxtrax-welcome',
@@ -16,18 +13,15 @@ export class WelcomeComponent implements AfterContentInit {
     // todo
     if(googleUser) {
       this.userSignedIn = true;
-      this.addOrFetchAccount(googleUser);
+      this._router.navigate(['Home', {id: 0}]);
     }
     console.log('I am ' + JSON.stringify(googleUser));
   };
 
   private _router: Router;
-  private _accountService: AccountService;
-  private _account: Account;
 
-  constructor(router: Router, accountSvc: AccountService) {
+  constructor(router: Router) {
     this._router = router;
-    this._accountService = accountSvc;
   }
 
   public ngAfterContentInit(): void {
@@ -49,16 +43,5 @@ export class WelcomeComponent implements AfterContentInit {
         'onsuccess': this.onGoogleSignin,
         'onfailure': this.onFailure
       });
-  }
-
-  public onStartClick(): void {
-    // todo
-    this._router.navigate(['Home', {id: 1}]);
-  }
-
-  private addOrFetchAccount(googleUser: gapi.auth2.GoogleUser) {
-    let authResponse: gapi.auth2.AuthResponse = googleUser.getAuthResponse();
-    this._accountService.fetchOrAddAccount(authResponse.id_token)
-                        .subscribe(account => this._account);
   }
 }

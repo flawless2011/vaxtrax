@@ -1,0 +1,8 @@
+{
+  "name": "vaxtrax",
+  "version": false,
+  "ambientDependencies": {
+    "gapi.auth2": "github:DefinitelyTyped/DefinitelyTyped/gapi.auth2/gapi.auth2.d.ts#1d832eb59fd6268cd01079ed2594f3634e04593e",
+    "gapi": "github:DefinitelyTyped/DefinitelyTyped/gapi/gapi.d.ts#15e8b662535b2c6b84dc9d5ff4d3eb9371683630"
+  }
+}
