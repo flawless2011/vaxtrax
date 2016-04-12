@@ -24,6 +24,7 @@
     "./app/boot.ts",
     "./app/components/app/app.component.ts",
     "./app/components/home/home.component.ts",
+    "./app/components/home/leftnav.component.ts",
     "./app/components/welcome/authResult.ts",
     "./app/components/welcome/welcome.component.ts",
     "./app/models/account.ts",

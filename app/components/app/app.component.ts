@@ -16,6 +16,6 @@ import {AccountService} from '../../services/account.service';
 })
 @RouteConfig([
   {path: '/', name: 'Welcome', component: WelcomeComponent, useAsDefault: true},
-  {path: '/:id/home', name: 'Home', component: HomeComponent}
+  {path: '/home/:id', name: 'Home', component: HomeComponent}
 ])
 export class AppComponent { }

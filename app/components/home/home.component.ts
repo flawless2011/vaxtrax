@@ -4,9 +4,12 @@ import {Router} from 'angular2/router';
 import {AccountService} from '../../services/account.service';
 import {Account} from '../../models/account';
 
+import {LeftNavComponent} from './leftnav.component';
+
 @Component({
   selector: 'vaxtrax-home',
-  templateUrl: 'app/views/vaxtrax/home.html'
+  templateUrl: 'app/views/vaxtrax/home.html',
+  directives: [LeftNavComponent]
 })
 export class HomeComponent implements OnInit {
   public googleUser: gapi.auth2.GoogleUser;
