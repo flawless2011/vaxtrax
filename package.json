@@ -5,13 +5,15 @@
   "repository": "https://github.com/flawless2011/vaxtrax",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.13.4",
+    "@angular2-material/core": "^2.0.0-alpha.2",
+    "@angular2-material/toolbar": "^2.0.0-alpha.2",
     "angular2": "^2.0.0-beta.8",
-    "systemjs": "^0.19.8",
     "es6-promise": "^3.0.2",
     "es6-shim": "^0.33.13",
+    "express": "^4.13.4",
     "reflect-metadata": "0.1.2",
     "rxjs": "^5.0.0-beta.2",
+    "systemjs": "^0.19.8",
     "zone.js": "^0.5.15"
   },
   "devDependencies": {

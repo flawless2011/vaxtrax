@@ -5,8 +5,6 @@
     <meta name="description" content="">
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="app/bower_components/Materialize/dist/css/materialize.min.css"  media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="app/styles/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="google-signin-client_id" content="112470559146-muvvecaudu5j5g2jblclu1bds5bnlh2k.apps.googleusercontent.com">
@@ -19,6 +17,7 @@
     <script src="lib/angular2.dev.js"></script>
     <script src="lib/router.dev.js"></script>
     <script src="lib/http.dev.js"></script>
+    <script src="lib/toolbar.js"></script>
     <script src="https://apis.google.com/js/platform.js"></script>
 
     <!-- 2. Configure SystemJS -->
@@ -31,10 +30,17 @@
           },
           'gapi.auth2': {
             format: 'cjs'
+          },
+          '@angular2-material/core': {
+            format: 'cjs'
+          },
+          '@angular2-material/toolbar': {
+            format: 'cjs'
           }
         },
         map: {
-          'gapi.auth2': 'https://apis.google.com/js/platform.js'
+          'gapi.auth2': 'https://apis.google.com/js/platform.js',
+          '@angular2-material/toolbar': 'lib/toolbar.js'
         }
       });
       System.import('app/boot')
@@ -45,11 +51,6 @@
   <base href="/">
 
   <!-- 3. Display the application -->
-  <body>
-    <vaxtrax>Loading...</vaxtrax>
-    <!--Import jQuery before materialize.js-->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="app/bower_components/Materialize/dist/js/materialize.min.js"></script>
-  </body>
+  <body><vaxtrax>Loading...</vaxtrax></body>
 
 </html>
