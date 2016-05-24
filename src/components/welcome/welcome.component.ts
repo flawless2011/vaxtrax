@@ -1,9 +1,9 @@
-import {Component, AfterContentInit} from 'angular2/core';
-import {Router} from 'angular2/router';
+import {Component, AfterContentInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'vaxtrax-welcome',
-  templateUrl: 'app/views/vaxtrax/welcome.html'
+  templateUrl: './welcome.component.html'
 })
 export class WelcomeComponent implements AfterContentInit {
 
@@ -11,7 +11,7 @@ export class WelcomeComponent implements AfterContentInit {
 
   public onGoogleSignin = (googleUser: gapi.auth2.GoogleUser): void => {
     // todo
-    if(googleUser) {
+    if (googleUser) {
       this.userSignedIn = true;
       this._router.navigate(['Home', {id: 0}]);
     }

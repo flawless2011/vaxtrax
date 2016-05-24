@@ -1,5 +1,5 @@
-import {Component, OnInit} from 'angular2/core';
-import {Router} from 'angular2/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 import {AccountService} from '../../services/account.service';
 import {Account} from '../../models/account';
@@ -8,7 +8,7 @@ import {LeftNavComponent} from './leftnav.component';
 
 @Component({
   selector: 'vaxtrax-home',
-  templateUrl: 'app/views/vaxtrax/home.html',
+  templateUrl: './home.component.html',
   directives: [LeftNavComponent]
 })
 export class HomeComponent implements OnInit {

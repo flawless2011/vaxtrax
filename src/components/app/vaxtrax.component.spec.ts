@@ -15,8 +15,8 @@ describe('App: Vaxtrax', () => {
     expect(app).toBeTruthy();
   }));
 
-  it('should have as title \'vaxtrax works!\'',
+  it('should have as title \'Vaxtrax works!\'',
       inject([VaxtraxAppComponent], (app: VaxtraxAppComponent) => {
-    expect(app.title).toEqual('vaxtrax works!');
+    expect(app.title).toEqual('Vaxtrax works!');
   }));
 });
