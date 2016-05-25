@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {Router} from '@angular/router-deprecated';
 
 import {AccountService} from '../../services/account.service';
 import {Account} from '../../models/account';
@@ -7,8 +7,9 @@ import {Account} from '../../models/account';
 import {LeftNavComponent} from './leftnav.component';
 
 @Component({
+  moduleId: module.id,
   selector: 'vaxtrax-home',
-  templateUrl: './home.component.html',
+  templateUrl: 'home.component.html',
   directives: [LeftNavComponent]
 })
 export class HomeComponent implements OnInit {
@@ -38,7 +39,7 @@ export class HomeComponent implements OnInit {
   }
 
   private handleAccountLogin(account: Account): void {
-    if(account) {
+    if (account) {
       this.onRegistered();
     } else {
       // TODO display errors

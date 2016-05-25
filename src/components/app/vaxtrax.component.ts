@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import {HTTP_PROVIDERS} from '@angular/http';
-import {RouteConfig, ROUTER_DIRECTIVES} from '@angular/router';
+import {RouteConfig, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 import {WelcomeComponent} from '../welcome/welcome.component';
 import {HomeComponent} from '../home/home.component';
 import {AccountService} from '../../services/account.service';

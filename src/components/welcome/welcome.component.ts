@@ -1,9 +1,10 @@
 import {Component, AfterContentInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {Router} from '@angular/router-deprecated';
 
 @Component({
+  moduleId: module.id,
   selector: 'vaxtrax-welcome',
-  templateUrl: './welcome.component.html'
+  templateUrl: 'welcome.component.html'
 })
 export class WelcomeComponent implements AfterContentInit {
 
