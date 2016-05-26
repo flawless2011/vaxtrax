@@ -1,5 +1,6 @@
 import {Component, AfterContentInit} from '@angular/core';
 import {Router} from '@angular/router-deprecated';
+import {AngularFire, FirebaseAuthState} from 'angularfire2';
 
 @Component({
   moduleId: module.id,
@@ -19,15 +20,29 @@ export class WelcomeComponent implements AfterContentInit {
     console.log('I am ' + JSON.stringify(googleUser));
   };
 
-  private _router: Router;
+  public onSignin = (auth: FirebaseAuthState): void => {
+    console.log(auth);
+    if (auth.google){
+      this.onGoogleSignin(auth.google);
+    }
+  }
 
-  constructor(router: Router) {
+  private _router: Router;
+  private _af: AngularFire;
+
+  constructor(router: Router, af: AngularFire) {
     this._router = router;
+    this._af = af;
+    this._af.auth.subscribe(auth => this.onSignin(auth));
   }
 
   public ngAfterContentInit(): void {
     this.onRender();
   }
+
+  public login = (): void => {
+    this._af.auth.login();
+  };
 
   public onFailure(): void {
     // tod

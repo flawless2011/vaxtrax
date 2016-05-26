@@ -1,24 +1,19 @@
 import {Injectable} from '@angular/core';
-import {Http, Headers, RequestOptions, Response} from '@angular/http';
+import {AngularFire} from 'angularfire2';
+import {Response} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 import {Account} from '../models/account';
 
 @Injectable()
 export class AccountService {
 
-  private ADD_ACCOUNT_URL: string = 'http://localhost:8080/api/account'; // TODO
+  constructor (private af: AngularFire) {}
 
-  constructor (private http: Http) {}
-
-  public fetchOrAddAccount(idToken: string): Observable<Account> {
-    let body = JSON.stringify({idToken: idToken});
-    let headers = new Headers({'Content-Type': 'application/json'});
-    let options = new RequestOptions({headers: headers});
-
-    return this.http.post(this.ADD_ACCOUNT_URL, body, options)
-                    .map(res => <Account> res.json())
-                    .catch(this.handleError);
-  }
+  public fetchOrAddAccount = (idToken: string): Observable<Account> => {
+    const account = this.af.database.object('/account');
+    return account.map(res => <Account> res.json())
+                  .catch(this.handleError);
+  };
 
   private handleError(error: Response) {
     console.error(error);
