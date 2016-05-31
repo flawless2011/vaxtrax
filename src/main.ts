@@ -7,6 +7,7 @@ import { FIREBASE_PROVIDERS,
   AuthProviders,
   firebaseAuthConfig } from 'angularfire2';
 import { ROUTER_PROVIDERS } from '@angular/router-deprecated';
+import { AccountService } from './services/account.service';
 
 if (environment.production) {
   enableProdMode();
@@ -19,5 +20,6 @@ bootstrap(VaxtraxAppComponent, [
   firebaseAuthConfig({
     provider: AuthProviders.Google,
     method: AuthMethods.Popup
-  })
+  }),
+  AccountService
 ]);

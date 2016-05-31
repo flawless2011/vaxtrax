@@ -1,9 +1,11 @@
 import {Component, OnInit, Inject} from '@angular/core';
-import {Router} from '@angular/router-deprecated';
-import {AngularFire, FirebaseAuth} from 'angularfire2';
-
+import {FirebaseAuth, FirebaseObjectObservable} from 'angularfire2';
 import {AccountService} from '../../services/account.service';
+
 import {Account} from '../../models/account';
+import {Person} from '../../models/person';
+
+import {AuthResult} from '../welcome/authResult';
 
 import {LeftNavComponent} from './leftnav.component';
 
@@ -14,42 +16,32 @@ import {LeftNavComponent} from './leftnav.component';
   directives: [LeftNavComponent]
 })
 export class HomeComponent implements OnInit {
-  public googleUser: gapi.auth2.GoogleUser;
-  private _router: Router;
-  private _accountService: AccountService;
-  private _af: AngularFire;
+  public account: FirebaseObjectObservable<Account>;
+
+  private _accountSvc: AccountService;
   private _auth: FirebaseAuth;
 
-  constructor(router: Router,
+  constructor(
     accountSvc: AccountService,
-    af: AngularFire,
     @Inject(FirebaseAuth) auth: FirebaseAuth) {
-    this._router = router;
-    this._accountService = accountSvc;
-    this._af = af;
+    this._accountSvc = accountSvc;
     this._auth = auth;
   }
 
   public ngOnInit(): void {
-    this._auth.subscribe(authState => this.addOrFetchAccount(authState.google));
+    this._auth.subscribe(authState => this.addOrFetchAccount(authState));
   }
 
-  private addOrFetchAccount(googleUser: gapi.auth2.GoogleUser): void {
-    console.log(googleUser);
-    // TODO add or fetch the user in Firebase
+  private addOrFetchAccount(authUser: any): void {
+    // Add or fetch the user in Firebase
+    let authResult = <AuthResult> {
+      firstName: authUser.google.cachedUserProfile.given_name,
+      lastName: authUser.google.cachedUserProfile.family_name,
+      loginId: authUser.uid,
+      imageURL: authUser.google.profileImageURL,
+      gender: authUser.google.cachedUserProfile.gender,
+      loginSystem: 'Google'
+    };
+    this.account = this._accountSvc.addOrFetchAccount(authResult);
   }
-
-  private onRegistered(): void {
-    // TODO Display stuff
-    console.log(this.googleUser);
-  }
-
-  private handleAccountLogin(account: Account): void {
-    if (account) {
-      this.onRegistered();
-    } else {
-      // TODO display errors
-    }
-  }
-
 }
