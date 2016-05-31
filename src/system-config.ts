@@ -5,7 +5,6 @@
 const map: any = {
   'firebase': 'vendor/firebase/lib/firebase-web.js',
   'angularfire2': 'vendor/angularfire2',
-  'gapi.auth2': 'https://apis.google.com/js/platform.js',
   '@angular2-material': 'vendor/\@angular2-material'
 };
 
@@ -14,31 +13,26 @@ const packages: any = {
   angularfire2: {
     defaultExtension: 'js',
     main: 'angularfire2.js'
-  },
-  'gapi.auth2': {
-    format: 'cjs'
-  },
-  '@angular2-material/core': {
-    format: 'cjs',
-    defaultExtension: 'js',
-    main: 'core.js'
-  },
-  '@angular2-material/toolbar': {
-    format: 'cjs',
-    defaultExtension: 'js',
-    main: 'toolbar.js'
-  },
-  '@angular2-material/list': {
-    format: 'cjs',
-    defaultExtension: 'js',
-    main: 'list.js'
-  },
-  '@angular2-material/sidenav': {
-    format: 'cjs',
-    defaultExtension: 'js',
-    main: 'sidenav.js'
   }
 };
+
+const materialPkgs: string[] = [
+  'button',
+  'card',
+  'checkbox',
+  'core',
+  'icon',
+  'input',
+  'list',
+  'progress-circle',
+  'radio',
+  'sidenav',
+  'toolbar'
+];
+
+materialPkgs.forEach((pkg) => {
+  packages[`@angular2-material/${pkg}`] = {main: `${pkg}.js`};
+});
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 /***********************************************************************************************
