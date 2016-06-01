@@ -38,6 +38,7 @@ export class HomeComponent implements OnInit {
       firstName: authUser.google.cachedUserProfile.given_name,
       lastName: authUser.google.cachedUserProfile.family_name,
       loginId: authUser.uid,
+      email: 'example@example.com',
       imageURL: authUser.google.profileImageURL,
       gender: authUser.google.cachedUserProfile.gender,
       loginSystem: 'Google'

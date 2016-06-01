@@ -1,0 +1,8 @@
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.secondary {
+  color: rgba(0,0,0,0.54);
+}
