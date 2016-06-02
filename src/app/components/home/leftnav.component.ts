@@ -27,14 +27,17 @@ import {PersonComponent} from './person.component';
 export class LeftNavComponent {
   @Input('account') account: Account;
   public selectedPerson: Person;
-  public isNavOpen: boolean = false;
+  public addPersonIndicator: boolean = false;
 
   public personSelected(index: number): void {
     this.selectedPerson = this.account.family[index];
-    this.toggleSideNav();
   }
 
-  public toggleSideNav(): void {
-    this.isNavOpen = !this.isNavOpen;
+  public addPerson(): void {
+    this.addPersonIndicator = true;
+  }
+
+  public onCancelAddPerson(value: boolean) {
+    this.addPersonIndicator = false;
   }
 }

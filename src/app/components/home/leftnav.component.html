@@ -6,9 +6,11 @@
         <img md-list-avatar [src]="person.imageURL" [alt]="person.firstName" />
         <h3 md-line>{{person.firstName}} {{person.lastName}}</h3>
       </a>
+      <md-divider></md-divider>
       <a md-list-item>
-        <md-icon md-list-icon>add</md-icon>
-        <h3 md-line>Add person...</h3>
+        <button md-mini-fab color="warn" (click)="addPerson()">
+          <md-icon class="md-24">add</md-icon>
+        </button>
       </a>
     </md-nav-list>
   </md-sidenav>
@@ -20,5 +22,5 @@
     <span class="toolbar-fill-remaining"></span>
     <span *ngIf="account">Welcome {{account.family[0].firstName}}!</span>
   </md-toolbar>
-  <vaxtrax-person [person]="selectedPerson"></vaxtrax-person>
+  <vaxtrax-person [person]="selectedPerson" [addPerson]="addPersonIndicator" (cancelAddEvent)="onCancelAddPerson($event)"></vaxtrax-person>
 </md-sidenav-layout>
