@@ -1,3 +1,5 @@
-export interface Immunization {
-  _id: string;
+export class Immunization {
+  constructor (
+    id: string
+  ) {}
 }
