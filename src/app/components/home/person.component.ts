@@ -1,5 +1,8 @@
-import {Component, Input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {Person} from '../../models/person';
+import {AccountService} from '../../services/account.service';
+
+import {FirebaseListObservable, AngularFire} from 'angularfire2';
 
 import {MdButton} from '@angular2-material/button';
 import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
@@ -20,12 +23,25 @@ import {MdRadioButton, MdRadioGroup, MdRadioDispatcher} from '@angular2-material
   ],
   providers: [MdRadioDispatcher]
 })
-export class PersonComponent {
-  @Input('person') person: Person;
-  @Input('addPerson') addPersonFormShowing: boolean;
-  @Output() cancelAddEvent = new EventEmitter<boolean>();
+export class PersonComponent implements OnInit {
+  @Input('personIndex') personIndex: number;
+  public family: FirebaseListObservable<any[]>;
+  @Input('showAddPerson') addPersonFormShowing: boolean;
+  @Output() addPersonEvent = new EventEmitter<boolean>();
+
+  constructor (private _accountSvc: AccountService, public af: AngularFire) {}
+
+  public ngOnInit() {
+    this.family = this.af.database
+      .list(this._accountSvc.accountUri + '/family');
+  }
 
   public cancelAdd(): void {
-    this.cancelAddEvent.emit(true);
+    this.addPersonEvent.emit(false);
+  }
+
+  public onSubmit(person): void {
+    this.family.push(person);
+    this.addPersonEvent.emit(true);
   }
 }

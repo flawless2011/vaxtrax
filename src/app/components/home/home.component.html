@@ -1,1 +1,25 @@
-<vaxtrax-leftnav [account]="(account | async)"></vaxtrax-leftnav>
+<md-sidenav-layout fullscreen>
+  <md-sidenav #sidenav mode="side">
+    <md-nav-list>
+      <h3 md-subheader>My Family</h3>
+      <a md-list-item *ngFor="let person of family | async; let i = index" (click)=personSelected(i)>
+        <img md-list-avatar [src]="person.imageURL" [alt]="person.firstName" />
+        <h3 md-line>{{person.firstName}} {{person.lastName}} ({{person.relationship}})</h3>
+      </a>
+      <md-divider></md-divider>
+      <a md-list-item (click)="addPerson()">Add person...</a>
+    </md-nav-list>
+  </md-sidenav>
+  <md-toolbar color="primary">
+    <button md-icon-button (click)="sidenav.toggle()">
+      <md-icon>menu</md-icon>
+    </button>
+    <span>Vaxtrax</span>
+    <span class="toolbar-fill-remaining"></span>
+    <span *ngIf="(account | async)">Welcome {{(account | async)?.family[0].firstName}}!</span>
+  </md-toolbar>
+  <vaxtrax-person
+  [person]="selectedPerson"
+  [showAddPerson]="addPersonIndicator"
+  (addPersonEvent)="onAddPerson($event)"></vaxtrax-person>
+</md-sidenav-layout>
