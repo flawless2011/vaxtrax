@@ -7,7 +7,7 @@
         <h3 md-line>{{person.firstName}} {{person.lastName}} ({{person.relationship}})</h3>
       </a>
       <md-divider></md-divider>
-      <a md-list-item (click)="addPerson()">Add person...</a>
+      <a md-list-item (click)="addPersonIndicator = !addPersonIndicator">Add person...</a>
     </md-nav-list>
   </md-sidenav>
   <md-toolbar color="primary">
@@ -19,7 +19,7 @@
     <span *ngIf="(account | async)">Welcome {{(account | async)?.family[0].firstName}}!</span>
   </md-toolbar>
   <vaxtrax-person
-  [person]="selectedPerson"
+  [personIndex]="selectedPerson"
   [showAddPerson]="addPersonIndicator"
   (addPersonEvent)="onAddPerson($event)"></vaxtrax-person>
 </md-sidenav-layout>

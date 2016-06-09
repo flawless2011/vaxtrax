@@ -21,6 +21,14 @@ md-card {
   margin: 20px 50px 20px 50px;
 }
 
+.vax-card {
+  display: flex;
+}
+
+.vax-card md-card {
+  flex-grow: 1;
+}
+
 .card-container {
   display: flex;
   flex-flow: row wrap;

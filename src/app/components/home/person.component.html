@@ -21,3 +21,22 @@
     </md-card-actions>
   </md-card>
 </div>
+<div class="vax-card" *ngIf="!addPersonFormShowing && personIndex >= 0">
+  <md-card>
+    <md-card-title>Vaccinations for {{person.firstName}} {{person.lastName}}</md-card-title>
+    <md-card-content>
+      <md-list>
+        <h3 md-subheader>Upcoming Vaccinations</h3>
+        <p md-subheader *ngIf="!person.scheduleVaccinations">
+          NONE
+        </p>
+        <md-divider></md-divider>
+        <h3 md-subheader>Completed Vaccinations</h3>
+        <md-list-item *ngFor="let vax of person.vaccinations">
+          <h4 md-line>{{vax.name}}</h4>
+          <p md-line>{{vax.date}}</p>
+        </md-list-item>
+      </md-list>
+    </md-card-content>
+  </md-card>
+</div>

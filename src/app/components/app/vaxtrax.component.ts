@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AngularFire } from 'angularfire2';
 import {HTTP_PROVIDERS} from '@angular/http';
 import {RouteConfig, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 import {WelcomeComponent} from '../welcome/welcome.component';
@@ -26,8 +25,4 @@ import {MD_SIDENAV_DIRECTIVES} from '@angular2-material/sidenav';
   {path: '/home/:id', name: 'Home', component: HomeComponent}
 ])
 export class VaxtraxAppComponent {
-  userName: String;
-
-  constructor(af: AngularFire) {
-  }
 }

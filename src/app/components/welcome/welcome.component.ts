@@ -9,13 +9,9 @@ import {AngularFire, FirebaseAuthState} from 'angularfire2';
 })
 export class WelcomeComponent implements AfterContentInit {
 
-  private _router: Router;
-  private _af: AngularFire;
-
-  constructor(router: Router, af: AngularFire) {
-    this._router = router;
-    this._af = af;
-  }
+  constructor(
+    private _router: Router,
+    private _af: AngularFire) {}
 
   public onSignin = (auth: FirebaseAuthState): void => {
     console.log(auth);

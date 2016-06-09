@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, OnChanges, Input, Output, EventEmitter} from '@angular/core';
 import {Person} from '../../models/person';
 import {AccountService} from '../../services/account.service';
 
@@ -23,17 +23,28 @@ import {MdRadioButton, MdRadioGroup, MdRadioDispatcher} from '@angular2-material
   ],
   providers: [MdRadioDispatcher]
 })
-export class PersonComponent implements OnInit {
+export class PersonComponent implements OnInit, OnChanges {
   @Input('personIndex') personIndex: number;
-  public family: FirebaseListObservable<any[]>;
+  private family$: FirebaseListObservable<any[]>;
+  public family: Person[];
+  public person: Person;
   @Input('showAddPerson') addPersonFormShowing: boolean;
   @Output() addPersonEvent = new EventEmitter<boolean>();
 
-  constructor (private _accountSvc: AccountService, public af: AngularFire) {}
+  constructor (
+    private _accountSvc: AccountService,
+    private _af: AngularFire) {}
 
   public ngOnInit() {
-    this.family = this.af.database
+    this.family$ = this._af.database
       .list(this._accountSvc.accountUri + '/family');
+    this.family$.subscribe(family => this.family = family);
+  }
+
+  public ngOnChanges(changes: any) {
+    if (this.family && changes.personIndex) {
+      this.person = this.family[this.personIndex];
+    }
   }
 
   public cancelAdd(): void {
@@ -41,7 +52,8 @@ export class PersonComponent implements OnInit {
   }
 
   public onSubmit(person): void {
-    this.family.push(person);
+    this.family$.push(person);
     this.addPersonEvent.emit(true);
   }
+
 }

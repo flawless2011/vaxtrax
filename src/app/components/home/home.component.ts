@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router-deprecated';
 import {AngularFire,
   FirebaseAuth,
   FirebaseObjectObservable,
@@ -41,7 +42,10 @@ export class HomeComponent implements OnInit {
   constructor(
     private _af: AngularFire,
     private _accountSvc: AccountService,
-    private _auth: FirebaseAuth) {}
+    private _auth: FirebaseAuth,
+    private _router: Router) {
+      this.selectedPerson = -1;
+    }
 
   public ngOnInit() {
     this._auth.subscribe(authState => this.addOrFetchAccount(authState));
@@ -60,6 +64,10 @@ export class HomeComponent implements OnInit {
   }
 
   private addOrFetchAccount(authUser: any): void {
+    if (!authUser) {
+      this._router.navigate(['Welcome']);
+      return;
+    }
     // Add or fetch the user in Firebase
     let authResult = <AuthResult> {
       firstName: authUser.google.cachedUserProfile.given_name,
