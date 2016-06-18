@@ -43,13 +43,18 @@ export class PersonComponent implements OnInit, OnChanges {
     private _af: AngularFire) {}
 
   public ngOnInit() {
-    this.family$ = this._af.database
-      .list(this._accountSvc.accountUri + '/family');
-    this.family$.subscribe(family => this.family = family);
   }
 
   public ngOnChanges(changes: any) {
-    if (this.family && changes.personIndex) {
+    // TODO this feels like yuck, re-evaluate
+    if (changes.personIndex && changes.personIndex.currentValue >= 0 && !this.family$){
+      this.family$ = this._af.database
+        .list(this._accountSvc.accountUri + '/family');
+      this.family$.subscribe(family => this.family = family);
+    }
+
+    // TODO a person observable might be better here
+    if (changes.personIndex && this.family) {
       this.person = this.family[this.personIndex];
     }
   }

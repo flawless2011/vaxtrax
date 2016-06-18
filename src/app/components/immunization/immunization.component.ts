@@ -36,6 +36,11 @@ export class ImmunizationComponent implements OnInit {
   ngOnInit() {
     this.upcoming$ = this.af.database
       .list(this.accountSvc.accountUri + '/family/' + this.personIndex + '/upcoming');
+    this.upcoming$.subscribe(upcoming => this.upcomingWatcher(upcoming));
+  }
+
+  upcomingWatcher(upcoming){
+    console.log(upcoming);
   }
 
   onCancel() {

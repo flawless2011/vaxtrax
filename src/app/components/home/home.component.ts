@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router-deprecated';
 import {AngularFire,
-  FirebaseAuth,
   FirebaseObjectObservable,
   FirebaseListObservable} from 'angularfire2';
 import {MdToolbar} from '@angular2-material/toolbar';
@@ -42,13 +41,10 @@ export class HomeComponent implements OnInit {
   constructor(
     private _af: AngularFire,
     private _accountSvc: AccountService,
-    private _auth: FirebaseAuth,
-    private _router: Router) {
-      this.selectedPerson = -1;
-    }
+    private _router: Router) {}
 
   public ngOnInit() {
-    this._auth.subscribe(authState => this.addOrFetchAccount(authState));
+    this._af.auth.subscribe(authState => this.addOrFetchAccount(authState));
   }
 
   public personSelected(index: number) {
@@ -64,21 +60,29 @@ export class HomeComponent implements OnInit {
   }
 
   private addOrFetchAccount(authUser: any): void {
-    if (!authUser) {
+    if (!authUser || !authUser.auth) {
       this._router.navigate(['Welcome']);
       return;
     }
+
+    let nameArray = authUser.auth.displayName.split(' ');
+    let firstName = nameArray.shift();
+    let lastName = nameArray.join(' ');
+
+    console.log(authUser.auth.uid);
+
     // Add or fetch the user in Firebase
+    // TODO need a new/better way of getting the Google+ data
     let authResult = <AuthResult> {
-      firstName: authUser.google.cachedUserProfile.given_name,
-      lastName: authUser.google.cachedUserProfile.family_name,
-      loginId: authUser.uid,
-      email: 'example@example.com',
-      imageURL: authUser.google.profileImageURL,
-      gender: authUser.google.cachedUserProfile.gender,
+      firstName: firstName,
+      lastName: lastName,
+      loginId: authUser.auth.uid,
+      email: authUser.auth.email,
+      imageURL: authUser.auth.photoURL,
       loginSystem: 'Google'
     };
     this.account = this._accountSvc.addOrFetchAccount(authResult);
     this.family = this._af.database.list(this._accountSvc.accountUri + '/family');
+    this.selectedPerson = 0;
   }
 }

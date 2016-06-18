@@ -1,6 +1,6 @@
 import {Component, AfterContentInit} from '@angular/core';
 import {Router} from '@angular/router-deprecated';
-import {AngularFire, FirebaseAuthState} from 'angularfire2';
+import {AngularFire, AuthProviders} from 'angularfire2';
 
 @Component({
   moduleId: module.id,
@@ -13,9 +13,9 @@ export class WelcomeComponent implements AfterContentInit {
     private _router: Router,
     private _af: AngularFire) {}
 
-  public onSignin = (auth: FirebaseAuthState): void => {
-    console.log(auth);
-    if (auth && auth.google) {
+  public onSignin = (auth: any): void => {
+    console.log(auth.auth.providerData[0]);
+    if (auth && AuthProviders.Google === auth.provider) {
       this._router.navigate(['Home', {id: 0}]);
     }
   };

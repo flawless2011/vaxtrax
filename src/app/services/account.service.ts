@@ -12,15 +12,18 @@ export class AccountService {
 
   public addOrFetchAccount = (authResult: AuthResult): FirebaseObjectObservable<Account> => {
     this.accountUri = '/account/' + authResult.loginId;
+    let myself = {
+      firstName: authResult.firstName,
+      lastName: authResult.lastName,
+      gender: authResult.gender || '',
+      relationship: 'me',
+      imageURL: authResult.imageURL
+    };
     const account = this.af.database.object(this.accountUri);
     const newAccount = {loginId: authResult.loginId,
                         loginSystem: authResult.loginSystem,
                         email: authResult.email,
-                        family: [{firstName: authResult.firstName,
-                                  lastName: authResult.lastName,
-                                  gender: authResult.gender,
-                                  relationship: 'me',
-                                  imageURL: authResult.imageURL}]};
+                        family: [myself]};
     account.update(newAccount);
     return account;
   };
