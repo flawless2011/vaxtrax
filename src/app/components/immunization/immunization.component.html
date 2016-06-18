@@ -1,0 +1,21 @@
+<div class="form">
+  <md-card>
+    <md-card-title>Add immunization to schedule</md-card-title>
+    <md-card-content>
+      <form #immForm="ngForm">
+        <md-input placeholder="Name" ngControl="name" type="text"></md-input>
+        <md-input placeholder="Type" ngControl="type" type="text"></md-input>
+        <md-input placeholder="Dosage Amount" ngControl="dosageValue" type="number"></md-input>
+        <md-radio-group ngControl="dosageUnit">
+          <md-radio-button value="ml">ml</md-radio-button>
+          <md-radio-button value="cc">cm<sup>3</sup></md-radio-button>
+        </md-radio-group>
+        <md-input placeholder="Scheduled Date" ngControl="scheduledDate" type="date"></md-input>
+      </form>
+    </md-card-content>
+    <md-card-actions align="end">
+      <button md-raised-button color="accent" (click)="cancelAdd()">CANCEL</button>
+      <button md-raised-button color="accent" (click)="onSubmit(immForm.value)">ADD</button>
+    </md-card-actions>
+  </md-card>
+</div>

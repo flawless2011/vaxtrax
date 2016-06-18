@@ -1,12 +1,11 @@
 import {Immunization} from './immunization';
 
-export class Person {
-  constructor(
-    firstName: string,
-    lastName: string,
-    relationship: string,
-    gender: string,
-    imageURL?: string,
-    immunizations?: Immunization[]
-  ) {}
+export interface Person {
+  firstName: string;
+  lastName: string;
+  relationship: string;
+  gender: string;
+  imageUrl: string;
+  completed: Immunization[];
+  upcoming: Immunization[];
 }

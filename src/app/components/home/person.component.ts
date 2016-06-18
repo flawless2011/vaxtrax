@@ -1,12 +1,16 @@
 import {Component, OnInit, OnChanges, Input, Output, EventEmitter} from '@angular/core';
 import {Person} from '../../models/person';
+import {Immunization} from '../../models/immunization';
+
 import {AccountService} from '../../services/account.service';
+import {ImmunizationComponent} from '../immunization/immunization.component';
 
 import {FirebaseListObservable, AngularFire} from 'angularfire2';
 
 import {MdButton} from '@angular2-material/button';
 import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
 import {MdInput} from '@angular2-material/input';
+import {MdIcon, MdIconRegistry} from '@angular2-material/icon';
 import {MdRadioButton, MdRadioGroup, MdRadioDispatcher} from '@angular2-material/radio';
 
 @Component({
@@ -18,17 +22,20 @@ import {MdRadioButton, MdRadioGroup, MdRadioDispatcher} from '@angular2-material
     MD_CARD_DIRECTIVES,
     MdButton,
     MdInput,
+    MdIcon,
     MdRadioButton,
-    MdRadioGroup
+    MdRadioGroup,
+    ImmunizationComponent
   ],
-  providers: [MdRadioDispatcher]
+  providers: [MdRadioDispatcher, MdIconRegistry]
 })
 export class PersonComponent implements OnInit, OnChanges {
   @Input('personIndex') personIndex: number;
   private family$: FirebaseListObservable<any[]>;
   public family: Person[];
   public person: Person;
-  @Input('showAddPerson') addPersonFormShowing: boolean;
+  public showAddImmunization: boolean = false;
+  @Input('showAddPerson') showAddPerson: boolean;
   @Output() addPersonEvent = new EventEmitter<boolean>();
 
   constructor (
@@ -51,9 +58,16 @@ export class PersonComponent implements OnInit, OnChanges {
     this.addPersonEvent.emit(false);
   }
 
-  public onSubmit(person): void {
+  public onSubmit(person: Person): void {
     this.family$.push(person);
     this.addPersonEvent.emit(true);
   }
 
+  public onAddImmunizationClick(): void {
+    this.showAddImmunization = true;
+  }
+
+  public onAddImmunizationEvent(): void {
+    this.showAddImmunization = false;
+  }
 }
