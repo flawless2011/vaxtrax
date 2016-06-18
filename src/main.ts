@@ -16,7 +16,11 @@ if (environment.production) {
 bootstrap(VaxtraxAppComponent, [
   ROUTER_PROVIDERS,
   FIREBASE_PROVIDERS,
-  defaultFirebase('https://boiling-fire-1699.firebaseio.com'),
+  defaultFirebase({
+    apiKey: '<your-key>',
+    authDomain: '<your-project-authdomain>',
+    databaseURL: '<your-database-URL>',
+    storageBucket: '<your-storage-bucket'}),
   firebaseAuthConfig({
     provider: AuthProviders.Google,
     method: AuthMethods.Popup
