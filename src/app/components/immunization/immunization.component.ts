@@ -21,10 +21,10 @@ import {Immunization} from '../../models/immunization';
     MdRadioButton,
     MdRadioGroup
   ],
-  providers: [MdRadioDispatcher, AccountService]
+  providers: [MdRadioDispatcher]
 })
 export class ImmunizationComponent implements OnInit {
-  @Input('personIndex') personIndex: number;
+  @Input('personId') personId: string;
   private upcoming$: FirebaseListObservable<any[]>;
   @Output() addImmunizationEvent = new EventEmitter<boolean>();
 
@@ -35,11 +35,11 @@ export class ImmunizationComponent implements OnInit {
 
   ngOnInit() {
     this.upcoming$ = this.af.database
-      .list(this.accountSvc.accountUri + '/family/' + this.personIndex + '/upcoming');
+      .list(this.accountSvc.accountUri + '/family/' + this.personId + '/upcoming');
     this.upcoming$.subscribe(upcoming => this.upcomingWatcher(upcoming));
   }
 
-  upcomingWatcher(upcoming){
+  upcomingWatcher(upcoming) {
     console.log(upcoming);
   }
 

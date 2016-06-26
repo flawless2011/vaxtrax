@@ -1,0 +1,32 @@
+<add-immunization [personId]="personId" (addImmunizationEvent)="onAddImmunizationEvent($event)" *ngIf="showAddImmunization"></add-immunization>
+<div class="vax-card" *ngIf="person">
+  <md-card>
+    <div class="vax-card-header">
+      <md-card-title>Vaccinations for {{person.firstName}} {{person.lastName}} ({{person.relationship}})</md-card-title>
+      <button md-fab (click)="onAddImmunizationClick()">
+        <md-icon>add</md-icon>
+      </button>
+    </div>
+    <md-card-content>
+      <md-list>
+        <h3 md-subheader>Upcoming Vaccinations</h3>
+        <md-list-item *ngFor="let upcomingVax of person.upcoming">
+          <h4 md-line>{{upcomingVax.name}}</h4>
+          <p md-line>{{upcomingVax.date}}</p>
+        </md-list-item>
+        <p md-subheader *ngIf="!person.upcoming">
+          NONE
+        </p>
+        <md-divider></md-divider>
+        <h3 md-subheader>Completed Vaccinations</h3>
+        <md-list-item *ngFor="let vax of person.completed">
+          <h4 md-line>{{vax.name}}</h4>
+          <p md-line>{{vax.date}}</p>
+        </md-list-item>
+        <p md-subheader *ngIf="!person.completed">
+          NONE
+        </p>
+      </md-list>
+    </md-card-content>
+  </md-card>
+</div>

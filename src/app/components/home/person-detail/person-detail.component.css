@@ -1,0 +1,50 @@
+md-radio-button, md-checkbox {
+  margin: 16px 8px;
+}
+
+md-input {
+  margin: 8px 0;
+  width: 100%;
+}
+
+.form {
+  display: flex;
+}
+
+.form md-card {
+  flex-grow: 1;
+}
+
+md-card {
+  width: 400px;
+  box-sizing: border-box;
+  margin: 40px 40px 20px 40px;
+}
+
+.vax-card {
+  display: flex;
+}
+
+.vax-card md-card {
+  flex-grow: 1;
+}
+
+.card-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.vax-card-header {
+  display: flex;
+}
+
+.vax-card-header md-card-title {
+  flex-grow: 1;
+}
+
+.vax-card-header button {
+  flex-grow: 0;
+  position: absolute;
+  right: -15px;
+  top: -10px;
+}

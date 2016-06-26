@@ -1,12 +1,11 @@
 import { bootstrap } from '@angular/platform-browser-dynamic';
 import { enableProdMode } from '@angular/core';
-import { VaxtraxAppComponent, environment } from './app/components/app/';
+import { VaxtraxAppComponent, environment, APP_ROUTER_PROVIDERS } from './app/components/app/';
 import { FIREBASE_PROVIDERS,
   defaultFirebase,
   AuthMethods,
   AuthProviders,
   firebaseAuthConfig } from 'angularfire2';
-import { ROUTER_PROVIDERS } from '@angular/router-deprecated';
 import { AccountService } from './app/services/account.service';
 
 if (environment.production) {
@@ -14,16 +13,20 @@ if (environment.production) {
 }
 
 bootstrap(VaxtraxAppComponent, [
-  ROUTER_PROVIDERS,
+  APP_ROUTER_PROVIDERS,
   FIREBASE_PROVIDERS,
   defaultFirebase({
-    apiKey: '<your-key>',
-    authDomain: '<your-project-authdomain>',
-    databaseURL: '<your-database-URL>',
-    storageBucket: '<your-storage-bucket'}),
+    apiKey: 'AIzaSyBGFRHeQ5Z7pM6P7xBJcRvjTz3oDrNwCzo',
+    authDomain: 'vaxtrax-1174.firebaseapp.com',
+    databaseURL: 'https://vaxtrax-1174.firebaseio.com',
+    storageBucket: 'vaxtrax-1174.appspot.com'}),
   firebaseAuthConfig({
     provider: AuthProviders.Google,
-    method: AuthMethods.Popup
+    method: AuthMethods.Popup,
+    scope: [
+      'https://www.googleapis.com/auth/userinfo.profile',
+      'https://www.googleapis.com/auth/plus.login'
+    ]
   }),
   AccountService
 ]);

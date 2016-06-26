@@ -1,0 +1,23 @@
+<div class="form" *ngIf="showAddPerson">
+  <md-card>
+    <md-card-title>Add person</md-card-title>
+    <md-card-content>
+      <form #personForm="ngForm">
+        <md-input placeholder="First Name" ngControl="firstName"></md-input>
+        <md-input placeholder="Last Name" ngControl="lastName"></md-input>
+        <md-radio-group ngControl="gender">
+          <md-radio-button value="Female">Female</md-radio-button>
+          <md-radio-button value="Male">Male</md-radio-button>
+          <md-radio-button value="Other">Other</md-radio-button>
+        </md-radio-group>
+        <md-input placeholder="ImageURL" ngControl="imageURL"></md-input>
+        <!-- TODO Implement this as md-select when available -->
+        <md-input placeholder="Relationship" ngControl="relationship"></md-input>
+      </form>
+    </md-card-content>
+    <md-card-actions align="end">
+      <button md-raised-button color="accent" (click)="cancelAdd()">CANCEL</button>
+      <button md-raised-button color="accent" (click)="onSubmit(personForm.value)" >ADD</button>
+    </md-card-actions>
+  </md-card>
+</div>

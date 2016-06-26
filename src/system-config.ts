@@ -45,7 +45,6 @@ const barrels: string[] = [
   '@angular/compiler',
   '@angular/http',
   '@angular/router',
-  '@angular/router-deprecated',
   '@angular/platform-browser',
   '@angular/platform-browser-dynamic',
 
@@ -59,6 +58,8 @@ const barrels: string[] = [
   'app/models',
   'app/services',
   'app/components/immunization',
+  'app/components/home/person-add',
+  'app/components/home/person-detail',
   /** @cli-barrel */
 ];
 

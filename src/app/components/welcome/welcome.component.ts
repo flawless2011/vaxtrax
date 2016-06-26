@@ -1,5 +1,5 @@
 import {Component, AfterContentInit} from '@angular/core';
-import {Router} from '@angular/router-deprecated';
+import {Router} from '@angular/router';
 import {AngularFire, AuthProviders} from 'angularfire2';
 
 @Component({
@@ -16,7 +16,7 @@ export class WelcomeComponent implements AfterContentInit {
   public onSignin = (auth: any): void => {
     console.log(auth.auth.providerData[0]);
     if (auth && AuthProviders.Google === auth.provider) {
-      this._router.navigate(['Home', {id: 0}]);
+      this._router.navigate(['/home', 0]);
     }
   };
 

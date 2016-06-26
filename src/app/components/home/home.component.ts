@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router-deprecated';
+import {Router,ROUTER_DIRECTIVES} from '@angular/router';
 import {AngularFire,
   FirebaseObjectObservable,
   FirebaseListObservable} from 'angularfire2';
@@ -8,8 +8,6 @@ import {MdIcon, MdIconRegistry} from '@angular2-material/icon';
 import {MdButton} from '@angular2-material/button';
 import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
 import {MD_SIDENAV_DIRECTIVES} from '@angular2-material/sidenav';
-import {PersonComponent} from './person.component';
-
 import {AccountService} from '../../services/account.service';
 
 import {Account} from '../../models/account';
@@ -28,7 +26,7 @@ import {AuthResult} from '../welcome/authResult';
     MdIcon,
     MdButton,
     MD_SIDENAV_DIRECTIVES,
-    PersonComponent
+    ROUTER_DIRECTIVES
   ],
   providers: [MdIconRegistry]
 })
@@ -39,12 +37,12 @@ export class HomeComponent implements OnInit {
   public addPersonIndicator: boolean = false;
 
   constructor(
-    private _af: AngularFire,
-    private _accountSvc: AccountService,
-    private _router: Router) {}
+    private af: AngularFire,
+    private accountSvc: AccountService,
+    private router: Router) {}
 
   public ngOnInit() {
-    this._af.auth.subscribe(authState => this.addOrFetchAccount(authState));
+    this.af.auth.subscribe(authState => this.addOrFetchAccount(authState));
   }
 
   public personSelected(index: number) {
@@ -61,7 +59,7 @@ export class HomeComponent implements OnInit {
 
   private addOrFetchAccount(authUser: any): void {
     if (!authUser || !authUser.auth) {
-      this._router.navigate(['Welcome']);
+      this.router.navigate(['']);
       return;
     }
 
@@ -81,8 +79,8 @@ export class HomeComponent implements OnInit {
       imageURL: authUser.auth.photoURL,
       loginSystem: 'Google'
     };
-    this.account = this._accountSvc.addOrFetchAccount(authResult);
-    this.family = this._af.database.list(this._accountSvc.accountUri + '/family');
+    this.account = this.accountSvc.addOrFetchAccount(authResult);
+    this.family = this.af.database.list(this.accountSvc.accountUri + '/family');
     this.selectedPerson = 0;
   }
 }

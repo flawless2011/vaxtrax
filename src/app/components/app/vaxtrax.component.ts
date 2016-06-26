@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import {HTTP_PROVIDERS} from '@angular/http';
-import {RouteConfig, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
-import {WelcomeComponent} from '../welcome/welcome.component';
-import {HomeComponent} from '../home/home.component';
+import {ROUTER_DIRECTIVES} from '@angular/router';
 import {AccountService} from '../../services/account.service';
 
 import {MdToolbar} from '@angular2-material/toolbar';
@@ -20,9 +18,6 @@ import {MD_SIDENAV_DIRECTIVES} from '@angular2-material/sidenav';
     HTTP_PROVIDERS
   ]
 })
-@RouteConfig([
-  {path: '/', name: 'Welcome', component: WelcomeComponent, useAsDefault: true},
-  {path: '/home/:id', name: 'Home', component: HomeComponent}
-])
+
 export class VaxtraxAppComponent {
 }

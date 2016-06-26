@@ -18,8 +18,9 @@
     <span class="toolbar-fill-remaining"></span>
     <span *ngIf="(account | async)">Welcome {{(account | async)?.family[0].firstName}}!</span>
   </md-toolbar>
-  <vaxtrax-person
+  <router-outlet></router-outlet>
+<!--  <person-detail
   [personIndex]="selectedPerson"
   [showAddPerson]="addPersonIndicator"
-  (addPersonEvent)="onAddPerson($event)"></vaxtrax-person>
+  (addPersonEvent)="onAddPerson($event)"></person-detail> -->
 </md-sidenav-layout>
