@@ -16,10 +16,10 @@ bootstrap(VaxtraxAppComponent, [
   APP_ROUTER_PROVIDERS,
   FIREBASE_PROVIDERS,
   defaultFirebase({
-    apiKey: 'AIzaSyBGFRHeQ5Z7pM6P7xBJcRvjTz3oDrNwCzo',
-    authDomain: 'vaxtrax-1174.firebaseapp.com',
-    databaseURL: 'https://vaxtrax-1174.firebaseio.com',
-    storageBucket: 'vaxtrax-1174.appspot.com'}),
+    apiKey: '<YOUR_API_KEY>',
+    authDomain: '<YOUR_AUTH_DOMAIN>',
+    databaseURL: '<YOUR_FIREBASE_DB_URL>',
+    storageBucket: '<YOUR_STORAGE_BUCKET>'}),
   firebaseAuthConfig({
     provider: AuthProviders.Google,
     method: AuthMethods.Popup,

@@ -1,7 +1,10 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+
 import {FirebaseListObservable, AngularFire} from 'angularfire2';
 import {Person} from '../../../models/person';
 import {AccountService} from '../../../services/account.service';
+import {AuthResult} from '../../welcome/authResult';
 
 import {MdButton} from '@angular2-material/button';
 import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
@@ -25,27 +28,52 @@ import {MdRadioButton, MdRadioGroup, MdRadioDispatcher} from '@angular2-material
   providers: [MdRadioDispatcher, MdIconRegistry]
 })
 export class PersonAddComponent implements OnInit {
-  @Input('showAddPerson') showAddPerson: boolean;
-  @Output() addPersonEvent = new EventEmitter<boolean>();
   private family$: FirebaseListObservable<any[]>;
 
   constructor(
-    private _accountSvc: AccountService,
-    private _af: AngularFire
+    private accountSvc: AccountService,
+    private af: AngularFire,
+    private router: Router
   ) {}
 
   ngOnInit() {
-    this.family$.subscribe();
+    this.af.auth.subscribe(authState => this.finishAuthLoad(authState));
   }
 
   public cancelAdd(): void {
-    this.addPersonEvent.emit(false);
+    this.router.navigate(['/home']);
   }
 
-  public onSubmit(person: Person): void {
+  public onSubmit(person: any): void {
     this.family$.push(person);
-    this.addPersonEvent.emit(true);
+    this.router.navigate(['/home']);
   }
 
+  private finishAuthLoad(authUser: any) {
+    if (!authUser || !authUser.auth) {
+      this.router.navigate(['']);
+      return;
+    }
+
+    let nameArray = authUser.auth.displayName.split(' ');
+    let firstName = nameArray.shift();
+    let lastName = nameArray.join(' ');
+
+    console.log(authUser.auth.uid);
+
+    // Add or fetch the user in Firebase
+    // TODO need a new/better way of getting the Google+ data
+    let authResult = <AuthResult> {
+      firstName: firstName,
+      lastName: lastName,
+      loginId: authUser.auth.uid,
+      email: authUser.auth.email,
+      imageURL: authUser.auth.photoURL,
+      loginSystem: 'Google'
+    };
+    let account = this.accountSvc.addOrFetchAccount(authResult);
+    this.family$ = this.af.database.list(this.accountSvc.accountUri + '/family');
+    this.family$.subscribe(family => console.log(family));
+  }
 
 }

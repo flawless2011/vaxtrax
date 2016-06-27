@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Subscription} from 'rxjs/Subscription';
+import {ActivatedRoute, Router, Params} from '@angular/router';
 
 import {FirebaseObjectObservable, AngularFire} from 'angularfire2';
 import {Person} from '../../../models/person';
@@ -31,9 +32,10 @@ import {MdRadioButton, MdRadioGroup, MdRadioDispatcher} from '@angular2-material
   ],
   providers: [MdRadioDispatcher, MdIconRegistry]
 })
-export class PersonDetailComponent implements OnInit {
-  private personId: number;
+export class PersonDetailComponent implements OnInit, OnDestroy {
+  private personId: string;
   private person$: FirebaseObjectObservable<any>;
+  private params$: Subscription;
   public person: Person;
   public showAddImmunization: boolean = false;
 
@@ -46,6 +48,10 @@ export class PersonDetailComponent implements OnInit {
 
   ngOnInit() {
     this.af.auth.subscribe(authState => this.finishAuthLoad(authState));
+  }
+
+  ngOnDestroy() {
+    this.params$.unsubscribe();
   }
 
   public onAddImmunizationClick(): void {
@@ -80,7 +86,11 @@ export class PersonDetailComponent implements OnInit {
     };
     let account = this.accountSvc.addOrFetchAccount(authResult);
 
-    this.personId = +this.route.snapshot.params['id'];
+    this.params$ = this.route.params.subscribe(params => this.handleRouteParams(params));
+  }
+
+  private handleRouteParams(params: any) {
+    this.personId = params['id'];
     this.person$ = this.af.database
       .object(this.accountSvc.accountUri + '/family/' + this.personId);
     this.person$.subscribe(person => this.loadPerson(person));

@@ -33,8 +33,7 @@ import {AuthResult} from '../welcome/authResult';
 export class HomeComponent implements OnInit {
   public account: FirebaseObjectObservable<Account>;
   public family: FirebaseListObservable<any[]>;
-  public selectedPerson: number;
-  public addPersonIndicator: boolean = false;
+  public selectedPerson: string;
 
   constructor(
     private af: AngularFire,
@@ -45,16 +44,9 @@ export class HomeComponent implements OnInit {
     this.af.auth.subscribe(authState => this.addOrFetchAccount(authState));
   }
 
-  public personSelected(index: number) {
-    this.selectedPerson = index;
-  }
-
-  public addPerson() {
-    this.addPersonIndicator = true;
-  }
-
-  public onAddPerson(value: Person) {
-    this.addPersonIndicator = false;
+  public personSelected(id: string) {
+    this.selectedPerson = id;
+    this.router.navigate(['/home', this.selectedPerson]);
   }
 
   private addOrFetchAccount(authUser: any): void {
@@ -81,6 +73,5 @@ export class HomeComponent implements OnInit {
     };
     this.account = this.accountSvc.addOrFetchAccount(authResult);
     this.family = this.af.database.list(this.accountSvc.accountUri + '/family');
-    this.selectedPerson = 0;
   }
 }

@@ -2,12 +2,12 @@
   <md-sidenav #sidenav mode="side">
     <md-nav-list>
       <h3 md-subheader>My Family</h3>
-      <a md-list-item *ngFor="let person of family | async; let i = index" (click)=personSelected(i)>
+      <a md-list-item *ngFor="let person of family | async" (click)=personSelected(person.$key)>
         <img md-list-avatar [src]="person.imageURL" [alt]="person.firstName" />
         <h3 md-line>{{person.firstName}} {{person.lastName}} ({{person.relationship}})</h3>
       </a>
       <md-divider></md-divider>
-      <a md-list-item (click)="addPersonIndicator = !addPersonIndicator">Add person...</a>
+      <a md-list-item [routerLink]="['add']">Add person...</a>
     </md-nav-list>
   </md-sidenav>
   <md-toolbar color="primary">

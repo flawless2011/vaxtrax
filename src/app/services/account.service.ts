@@ -7,11 +7,15 @@ import {Account} from '../models/account';
 export class AccountService {
 
   public accountUri: string;
+  private account: FirebaseObjectObservable<Account>;
 
   constructor (private af: AngularFire) {}
 
   public addOrFetchAccount = (authResult: AuthResult): FirebaseObjectObservable<Account> => {
     this.accountUri = '/account/' + authResult.loginId;
+    if (this.account) {
+      return this.account;
+    }
     let myself = {
       firstName: authResult.firstName,
       lastName: authResult.lastName,
@@ -19,12 +23,19 @@ export class AccountService {
       relationship: 'me',
       imageURL: authResult.imageURL
     };
-    const account = this.af.database.object(this.accountUri);
     const newAccount = {loginId: authResult.loginId,
                         loginSystem: authResult.loginSystem,
                         email: authResult.email,
+                        $key: '0',
                         family: [myself]};
-    account.update(newAccount);
-    return account;
+    this.account = this.af.database.object(this.accountUri);
+    this.account.subscribe(account => this.handleAccount(account, newAccount));
+    return this.account;
   };
+
+  private handleAccount(account: Account, newAccount: Account) {
+    if (!account.email) {
+      this.account.update(newAccount);
+    }
+  }
 }
