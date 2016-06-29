@@ -10,18 +10,20 @@
     <md-card-content>
       <md-list>
         <h3 md-subheader>Upcoming Vaccinations</h3>
-        <md-list-item *ngFor="let upcomingVax of person.upcoming">
-          <h4 md-line>{{upcomingVax.name}}</h4>
-          <p md-line>{{upcomingVax.date}}</p>
+        <md-list-item *ngFor="let upcomingVax of upcoming$ | async">
+          <div md-line>
+            <span><h4>{{upcomingVax.name}}</h4>
+            <p>{{upcomingVax.scheduledDate}}</p></span>
+          </div>
         </md-list-item>
         <p md-subheader *ngIf="!person.upcoming">
           NONE
         </p>
         <md-divider></md-divider>
         <h3 md-subheader>Completed Vaccinations</h3>
-        <md-list-item *ngFor="let vax of person.completed">
+        <md-list-item *ngFor="let vax of completed$ | async">
           <h4 md-line>{{vax.name}}</h4>
-          <p md-line>{{vax.date}}</p>
+          <p md-line>{{vax.completedDate}}</p>
         </md-list-item>
         <p md-subheader *ngIf="!person.completed">
           NONE

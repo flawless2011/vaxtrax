@@ -2,7 +2,7 @@ import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 import {ActivatedRoute, Router, Params} from '@angular/router';
 
-import {FirebaseObjectObservable, AngularFire} from 'angularfire2';
+import {FirebaseObjectObservable, FirebaseListObservable, AngularFire} from 'angularfire2';
 import {Person} from '../../../models/person';
 import {Immunization} from '../../../models/immunization';
 import {AuthResult} from '../../welcome/authResult';
@@ -35,7 +35,9 @@ import {MdRadioButton, MdRadioGroup, MdRadioDispatcher} from '@angular2-material
 export class PersonDetailComponent implements OnInit, OnDestroy {
   private personId: string;
   private person$: FirebaseObjectObservable<any>;
-  private params$: Subscription;
+  private upcoming$: FirebaseListObservable<any[]>;
+  private completed$: FirebaseListObservable<any[]>;
+  private params: Subscription;
   public person: Person;
   public showAddImmunization: boolean = false;
 
@@ -47,11 +49,14 @@ export class PersonDetailComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.af.auth.subscribe(authState => this.finishAuthLoad(authState));
+    this.params = this.route.params.subscribe(params => {
+      this.personId = params['id'];
+      this.af.auth.subscribe(authState => this.finishAuthLoad(authState))
+    });
   }
 
   ngOnDestroy() {
-    this.params$.unsubscribe();
+    this.params.unsubscribe();
   }
 
   public onAddImmunizationClick(): void {
@@ -85,18 +90,18 @@ export class PersonDetailComponent implements OnInit, OnDestroy {
       loginSystem: 'Google'
     };
     let account = this.accountSvc.addOrFetchAccount(authResult);
-
-    this.params$ = this.route.params.subscribe(params => this.handleRouteParams(params));
+    this.fetchPerson();
   }
 
-  private handleRouteParams(params: any) {
-    this.personId = params['id'];
+  private fetchPerson() {
     this.person$ = this.af.database
       .object(this.accountSvc.accountUri + '/family/' + this.personId);
-    this.person$.subscribe(person => this.loadPerson(person));
+    this.person$.subscribe(person => this.setPerson(person));
+    this.upcoming$ = this.af.database.list(this.accountSvc.accountUri + '/family/' + this.personId + '/upcoming');
+    this.completed$ = this.af.database.list(this.accountSvc.accountUri + '/family/' + this.personId + '/completed');
   }
 
-  private loadPerson(person: Person){
+  private setPerson(person: Person) {
     this.person = person;
   }
 }
