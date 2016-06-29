@@ -4,7 +4,6 @@ import {ActivatedRoute, Router, Params} from '@angular/router';
 
 import {FirebaseObjectObservable, FirebaseListObservable, AngularFire} from 'angularfire2';
 import {Person} from '../../../models/person';
-import {Immunization} from '../../../models/immunization';
 import {AuthResult} from '../../welcome/authResult';
 
 import {AccountService} from '../../../services/account.service';

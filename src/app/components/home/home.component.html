@@ -7,7 +7,7 @@
         <h3 md-line>{{person.firstName}} {{person.lastName}} ({{person.relationship}})</h3>
       </a>
       <md-divider></md-divider>
-      <a md-list-item [routerLink]="['add']">Add person...</a>
+      <a md-list-item [routerLink]="['add']" (click)="sidenav.close()">Add person...</a>
     </md-nav-list>
   </md-sidenav>
   <md-toolbar color="primary">
