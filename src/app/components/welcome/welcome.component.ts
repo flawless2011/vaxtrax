@@ -10,23 +10,23 @@ import {AngularFire, AuthProviders} from 'angularfire2';
 export class WelcomeComponent implements AfterContentInit {
 
   constructor(
-    private _router: Router,
-    private _af: AngularFire) {}
+    private router: Router,
+    private af: AngularFire) {}
 
   public onSignin = (auth: any): void => {
-    console.log(auth.auth.providerData[0]);
+    console.log(auth);
     if (auth && AuthProviders.Google === auth.provider) {
-      this._router.navigate(['/home', 0]);
+      this.router.navigate(['/home', 0]);
     }
   };
 
   public ngAfterContentInit(): void {
     // this.onRender();
-    this._af.auth.subscribe(auth => this.onSignin(auth));
+    this.af.auth.subscribe(auth => this.onSignin(auth));
   }
 
   public login = (): void => {
-    this._af.auth.login();
+    this.af.auth.login();
   };
 
 }
