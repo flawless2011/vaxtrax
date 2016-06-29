@@ -5,10 +5,10 @@ describe('vaxtrax App', function() {
 
   beforeEach(() => {
     page = new VaxtraxPage();
-  })
+  });
 
   it('should display message saying app works', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('vaxtrax works!');
+    expect(page.getParagraphText()).toEqual('app works!');
   });
 });

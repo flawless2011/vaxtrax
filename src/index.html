@@ -4,10 +4,12 @@
   <meta charset="utf-8">
   <title>Vaxtrax</title>
   <base href="/">
-  {{content-for 'head'}}
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link type="text/css" rel="stylesheet" href="style.css">
+  {{#unless environment.production}}
+    <script src="/ember-cli-live-reload.js" type="text/javascript"></script>
+  {{/unless}}
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google-signin-client_id" content="112470559146-09e96bf3768j2mts1856ai9hi4aomrgr.apps.googleusercontent.com">
 
@@ -26,12 +28,15 @@
 <body>
   <vaxtrax-app>Loading...</vaxtrax-app>
 
-  <script src="vendor/es6-shim/es6-shim.js"></script>
+<!--  <script src="vendor/es6-shim/es6-shim.js"></script>
   <script src="vendor/reflect-metadata/Reflect.js"></script>
   <script src="vendor/systemjs/dist/system-polyfills.js"></script>
   <script src="vendor/systemjs/dist/system.src.js"></script>
   <script src="vendor/zone.js/dist/zone.js"></script>
-
+-->
+  {{#each scripts.polyfills}}
+  <script src="{{.}}"></script>
+  {{/each}}
   <script>
     System.import('system-config.js').then(function () {
       System.import('main');
