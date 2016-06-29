@@ -7,7 +7,7 @@ import {MdToolbar} from '@angular2-material/toolbar';
 import {MdIcon, MdIconRegistry} from '@angular2-material/icon';
 import {MdButton} from '@angular2-material/button';
 import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
-import {MD_SIDENAV_DIRECTIVES} from '@angular2-material/sidenav';
+import {MD_SIDENAV_DIRECTIVES, MdSidenav} from '@angular2-material/sidenav';
 import {AccountService} from '../../services/account.service';
 
 import {Account} from '../../models/account';
@@ -44,7 +44,8 @@ export class HomeComponent implements OnInit {
     this.af.auth.subscribe(authState => this.addOrFetchAccount(authState));
   }
 
-  public personSelected(id: string) {
+  public personSelected(id: string, sideNav: MdSidenav) {
+    sideNav.close();
     this.selectedPerson = id;
     this.router.navigate(['/home', this.selectedPerson]);
   }
