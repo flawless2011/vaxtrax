@@ -5,6 +5,7 @@
   <title>Vaxtrax</title>
   <base href="/">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link type="text/css" rel="stylesheet" href="style.css">
   {{#unless environment.production}}
@@ -26,14 +27,8 @@
   -->
 </head>
 <body>
-  <vaxtrax-app>Loading...</vaxtrax-app>
+  <vaxtrax-app><img class="loader" src="./assets/ripple.svg" /></vaxtrax-app>
 
-<!--  <script src="vendor/es6-shim/es6-shim.js"></script>
-  <script src="vendor/reflect-metadata/Reflect.js"></script>
-  <script src="vendor/systemjs/dist/system-polyfills.js"></script>
-  <script src="vendor/systemjs/dist/system.src.js"></script>
-  <script src="vendor/zone.js/dist/zone.js"></script>
--->
   {{#each scripts.polyfills}}
   <script src="{{.}}"></script>
   {{/each}}

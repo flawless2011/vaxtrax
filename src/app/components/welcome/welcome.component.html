@@ -1,16 +1,10 @@
-<div class="section no-pad-bot" id="index-banner">
-  <div class="container">
-    <br><br>
-    <h1 class="header center light-blue-text">VaxTrax</h1>
-    <div class="row center">
-      <h5 class="header col s12 light">A vaccination tracker for the whole family</h5>
-    </div>
-    <div class="row center">
-      Sign in to get started.
-    </div>
-    <div class="row center">
-      <button (click)="login()">Signin with Google</button>
-    </div>
-    <br><br>
-  </div>
+<div class="welcome">
+  <md-card>
+     <md-card-content>
+       <h1>Vaxtrax<img class="welcome-image" src="./assets/vaccine.png"></h1>
+       <h2>A vaccination tracker for the whole family</h2>
+       <h3>Sign in to get started!</h3>
+       <button class="google-btn" (click)="login()"></button>
+     </md-card-content>
+  </md-card>
 </div>

@@ -1,0 +1,44 @@
+h1 {
+  font-size: 66px;
+  font-family: 'Roboto', sans-serif;
+}
+
+h2 {
+  font-size: 26px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.google-btn {
+  background:url(./assets/btn_google+_signin_dark_normal_web.svg) no-repeat;
+  cursor: pointer;
+  width: 195px;
+  height: 50px;
+  border: none;
+  margin-top: 20px;
+}
+
+.google-btn:focus {
+  background:url(./assets/btn_google+_signin_dark_focus_web.svg) no-repeat;
+}
+
+.google-btn:active {
+  background:url(./assets/btn_google+_signin_dark_pressed_web.svg) no-repeat;
+}
+
+.welcome {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.welcome md-card {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.welcome-image {
+  height: auto;
+  width: 100px;
+  margin-left: 10px;
+}
