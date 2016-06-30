@@ -1,8 +1,10 @@
 import {Component, EventEmitter, OnInit, Input, Output} from '@angular/core';
+
+import {MdUniqueSelectionDispatcher} from '@angular2-material/core';
 import {MdButton} from '@angular2-material/button';
 import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
 import {MdInput} from '@angular2-material/input';
-import {MdRadioButton, MdRadioGroup, MdRadioDispatcher} from '@angular2-material/radio';
+import {MdRadioButton, MdRadioGroup} from '@angular2-material/radio';
 
 import {FirebaseListObservable, AngularFire} from 'angularfire2';
 
@@ -21,7 +23,7 @@ import {Immunization} from '../../models/immunization';
     MdRadioButton,
     MdRadioGroup
   ],
-  providers: [MdRadioDispatcher]
+  providers: [MdUniqueSelectionDispatcher]
 })
 export class ImmunizationComponent implements OnInit {
   @Input('personId') personId: string;

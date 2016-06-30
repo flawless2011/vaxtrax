@@ -2,15 +2,15 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
 import {FirebaseListObservable, AngularFire} from 'angularfire2';
-import {Person} from '../../../models/person';
 import {AccountService} from '../../../services/account.service';
 import {AuthResult} from '../../welcome/authResult';
 
+import {MdUniqueSelectionDispatcher} from '@angular2-material/core';
 import {MdButton} from '@angular2-material/button';
 import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
 import {MdInput} from '@angular2-material/input';
 import {MdIcon, MdIconRegistry} from '@angular2-material/icon';
-import {MdRadioButton, MdRadioGroup, MdRadioDispatcher} from '@angular2-material/radio';
+import {MdRadioButton, MdRadioGroup} from '@angular2-material/radio';
 
 @Component({
   moduleId: module.id,
@@ -25,7 +25,7 @@ import {MdRadioButton, MdRadioGroup, MdRadioDispatcher} from '@angular2-material
     MdRadioButton,
     MdRadioGroup
   ],
-  providers: [MdRadioDispatcher, MdIconRegistry]
+  providers: [MdUniqueSelectionDispatcher, MdIconRegistry]
 })
 export class PersonAddComponent implements OnInit {
   private family$: FirebaseListObservable<any[]>;
