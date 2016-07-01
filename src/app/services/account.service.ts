@@ -26,7 +26,6 @@ export class AccountService {
     const newAccount = {loginId: authResult.loginId,
                         loginSystem: authResult.loginSystem,
                         email: authResult.email,
-                        $key: '0',
                         family: [myself]};
     this.account = this.af.database.object(this.accountUri);
     this.account.subscribe(account => this.handleAccount(account, newAccount));
