@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
+import {NgForm} from '@angular/common';
 import {Router} from '@angular/router';
 
 import {FirebaseListObservable, AngularFire} from 'angularfire2';
-import {AccountService} from '../../../services/account.service';
-import {AuthResult} from '../../welcome/authResult';
 
 import {MdUniqueSelectionDispatcher} from '@angular2-material/core';
 import {MdButton} from '@angular2-material/button';
@@ -11,6 +10,10 @@ import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
 import {MdInput} from '@angular2-material/input';
 import {MdIcon, MdIconRegistry} from '@angular2-material/icon';
 import {MdRadioButton, MdRadioGroup} from '@angular2-material/radio';
+
+import {AccountService} from '../../../services/account.service';
+import {AuthResult} from '../../welcome/authResult';
+import {Person} from '../../../models/person';
 
 @Component({
   moduleId: module.id,
@@ -30,6 +33,12 @@ import {MdRadioButton, MdRadioGroup} from '@angular2-material/radio';
 export class PersonAddComponent implements OnInit {
   private family$: FirebaseListObservable<any[]>;
 
+  public person: Person = {
+    firstName: '',
+    lastName: '',
+    relationship: ''
+  };
+
   constructor(
     private accountSvc: AccountService,
     private af: AngularFire,
@@ -44,8 +53,11 @@ export class PersonAddComponent implements OnInit {
     this.router.navigate(['/home']);
   }
 
-  public onSubmit(person: any): void {
-    this.family$.push(person);
+  public onSubmit(): void {
+    if (!this.person.imageUrl) {
+      this.person.imageUrl = './assets/defaultPerson.png';
+    }
+    this.family$.push(this.person);
     this.router.navigate(['/home']);
   }
 
@@ -58,8 +70,6 @@ export class PersonAddComponent implements OnInit {
     let nameArray = authUser.auth.displayName.split(' ');
     let firstName = nameArray.shift();
     let lastName = nameArray.join(' ');
-
-    console.log(authUser.auth.uid);
 
     // Add or fetch the user in Firebase
     // TODO need a new/better way of getting the Google+ data
