@@ -78,7 +78,7 @@ export class PersonAddComponent implements OnInit {
       lastName: lastName,
       loginId: authUser.auth.uid,
       email: authUser.auth.email,
-      imageURL: authUser.auth.photoURL,
+      imageUrl: authUser.auth.photoURL,
       loginSystem: 'Google'
     };
     let account = this.accountSvc.addOrFetchAccount(authResult);

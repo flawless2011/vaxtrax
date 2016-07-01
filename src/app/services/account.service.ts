@@ -21,7 +21,7 @@ export class AccountService {
       lastName: authResult.lastName,
       gender: authResult.gender || '',
       relationship: 'me',
-      imageURL: authResult.imageURL
+      imageUrl: authResult.imageUrl
     };
     const newAccount = {loginId: authResult.loginId,
                         loginSystem: authResult.loginSystem,

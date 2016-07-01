@@ -3,7 +3,7 @@
     <md-nav-list>
       <h3 md-subheader>My Family</h3>
       <a md-list-item *ngFor="let person of family | async" (click)=personSelected(person.$key,sidenav)>
-        <img md-list-avatar [src]="person.imageURL" [alt]="person.firstName" />
+        <img md-list-avatar [src]="person.imageUrl" [alt]="person.firstName" />
         <h3 md-line>{{person.firstName}} {{person.lastName}} ({{person.relationship}})</h3>
       </a>
       <md-divider></md-divider>

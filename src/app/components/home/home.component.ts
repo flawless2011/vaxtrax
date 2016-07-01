@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router,ROUTER_DIRECTIVES} from '@angular/router';
+import {Router, ROUTER_DIRECTIVES} from '@angular/router';
 import {AngularFire,
   FirebaseObjectObservable,
   FirebaseListObservable} from 'angularfire2';
@@ -11,8 +11,6 @@ import {MD_SIDENAV_DIRECTIVES, MdSidenav} from '@angular2-material/sidenav';
 import {AccountService} from '../../services/account.service';
 
 import {Account} from '../../models/account';
-import {Person} from '../../models/person';
-
 import {AuthResult} from '../welcome/authResult';
 
 @Component({
@@ -69,7 +67,7 @@ export class HomeComponent implements OnInit {
       lastName: lastName,
       loginId: authUser.auth.uid,
       email: authUser.auth.email,
-      imageURL: authUser.auth.photoURL,
+      imageUrl: authUser.auth.photoURL,
       loginSystem: 'Google'
     };
     this.account = this.accountSvc.addOrFetchAccount(authResult);

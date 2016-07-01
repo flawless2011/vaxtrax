@@ -1,6 +1,6 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
-import {ActivatedRoute, Router, Params} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import {FirebaseObjectObservable, FirebaseListObservable, AngularFire} from 'angularfire2';
 import {Person} from '../../../models/person';
@@ -11,9 +11,7 @@ import {ImmunizationComponent} from '../../immunization/immunization.component';
 
 import {MdButton} from '@angular2-material/button';
 import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
-import {MdInput} from '@angular2-material/input';
 import {MdIcon, MdIconRegistry} from '@angular2-material/icon';
-import {MdRadioButton, MdRadioGroup, MdRadioDispatcher} from '@angular2-material/radio';
 
 @Component({
   moduleId: module.id,
@@ -23,13 +21,10 @@ import {MdRadioButton, MdRadioGroup, MdRadioDispatcher} from '@angular2-material
   directives: [
     MD_CARD_DIRECTIVES,
     MdButton,
-    MdInput,
     MdIcon,
-    MdRadioButton,
-    MdRadioGroup,
     ImmunizationComponent
   ],
-  providers: [MdRadioDispatcher, MdIconRegistry]
+  providers: [MdIconRegistry]
 })
 export class PersonDetailComponent implements OnInit, OnDestroy {
   private personId: string;
@@ -85,7 +80,7 @@ export class PersonDetailComponent implements OnInit, OnDestroy {
       lastName: lastName,
       loginId: authUser.auth.uid,
       email: authUser.auth.email,
-      imageURL: authUser.auth.photoURL,
+      imageUrl: authUser.auth.photoURL,
       loginSystem: 'Google'
     };
     let account = this.accountSvc.addOrFetchAccount(authResult);

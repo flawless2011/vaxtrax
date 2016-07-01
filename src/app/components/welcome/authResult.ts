@@ -3,7 +3,7 @@ export interface AuthResult {
   lastName: string;
   email: string;
   gender?: string;
-  imageURL?: string;
+  imageUrl?: string;
   loginId: string;
   loginSystem: string;
 }
