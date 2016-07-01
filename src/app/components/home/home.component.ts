@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, ROUTER_DIRECTIVES} from '@angular/router';
 import {AngularFire,
-  FirebaseObjectObservable,
-  FirebaseListObservable} from 'angularfire2';
+        FirebaseObjectObservable,
+        FirebaseListObservable} from 'angularfire2';
 import {MdToolbar} from '@angular2-material/toolbar';
 import {MdIcon, MdIconRegistry} from '@angular2-material/icon';
 import {MdButton} from '@angular2-material/button';
@@ -57,8 +57,6 @@ export class HomeComponent implements OnInit {
     let nameArray = authUser.auth.displayName.split(' ');
     let firstName = nameArray.shift();
     let lastName = nameArray.join(' ');
-
-    console.log(authUser.auth.uid);
 
     // Add or fetch the user in Firebase
     // TODO need a new/better way of getting the Google+ data

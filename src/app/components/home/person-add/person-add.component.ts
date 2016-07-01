@@ -81,7 +81,7 @@ export class PersonAddComponent implements OnInit {
       imageUrl: authUser.auth.photoURL,
       loginSystem: 'Google'
     };
-    let account = this.accountSvc.addOrFetchAccount(authResult);
+    this.accountSvc.addOrFetchAccount(authResult);
     this.family$ = this.af.database.list(this.accountSvc.accountUri + '/family');
     this.family$.subscribe(family => console.log(family));
   }

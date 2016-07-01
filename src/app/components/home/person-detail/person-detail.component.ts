@@ -2,7 +2,9 @@ import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 import {ActivatedRoute, Router} from '@angular/router';
 
-import {FirebaseObjectObservable, FirebaseListObservable, AngularFire} from 'angularfire2';
+import {FirebaseObjectObservable,
+        FirebaseListObservable,
+        AngularFire} from 'angularfire2';
 import {Person} from '../../../models/person';
 import {AuthResult} from '../../welcome/authResult';
 
@@ -45,7 +47,7 @@ export class PersonDetailComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.params = this.route.params.subscribe(params => {
       this.personId = params['id'];
-      this.af.auth.subscribe(authState => this.finishAuthLoad(authState))
+      this.af.auth.subscribe(authState => this.finishAuthLoad(authState));
     });
   }
 
@@ -71,8 +73,6 @@ export class PersonDetailComponent implements OnInit, OnDestroy {
     let firstName = nameArray.shift();
     let lastName = nameArray.join(' ');
 
-    console.log(authUser.auth.uid);
-
     // Add or fetch the user in Firebase
     // TODO need a new/better way of getting the Google+ data
     let authResult = <AuthResult> {
@@ -83,19 +83,15 @@ export class PersonDetailComponent implements OnInit, OnDestroy {
       imageUrl: authUser.auth.photoURL,
       loginSystem: 'Google'
     };
-    let account = this.accountSvc.addOrFetchAccount(authResult);
+    this.accountSvc.addOrFetchAccount(authResult);
     this.fetchPerson();
   }
 
   private fetchPerson() {
     this.person$ = this.af.database
       .object(this.accountSvc.accountUri + '/family/' + this.personId);
-    this.person$.subscribe(person => this.setPerson(person));
+    this.person$.subscribe(person => this.person = person);
     this.upcoming$ = this.af.database.list(this.accountSvc.accountUri + '/family/' + this.personId + '/upcoming');
     this.completed$ = this.af.database.list(this.accountSvc.accountUri + '/family/' + this.personId + '/completed');
-  }
-
-  private setPerson(person: Person) {
-    this.person = person;
   }
 }
