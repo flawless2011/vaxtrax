@@ -12,7 +12,7 @@ import {MdIcon, MdIconRegistry} from '@angular2-material/icon';
 import {MdRadioButton, MdRadioGroup} from '@angular2-material/radio';
 
 import {AccountService} from '../../../services/account.service';
-import {AuthResult} from '../../welcome/authResult';
+import {AuthResult} from '../../../models/authResult';
 import {Person} from '../../../models/person';
 
 @Component({

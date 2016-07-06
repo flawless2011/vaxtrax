@@ -54,13 +54,13 @@ const barrels: string[] = [
 
   // App specific barrels.
   'app/components/app',
-  'app/components/home',
-  'app/components/welcome',
+  'app/components/+home',
+  'app/components/+welcome',
   'app/models',
   'app/services',
-  'app/components/immunization',
-  'app/components/home/person-add',
-  'app/components/home/person-detail',
+  'app/components/+immunization',
+  'app/components/+home/+person-add',
+  'app/components/+home/+person-detail',
   /** @cli-barrel */
 ];
 

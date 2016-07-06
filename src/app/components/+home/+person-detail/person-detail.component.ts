@@ -6,10 +6,10 @@ import {FirebaseObjectObservable,
         FirebaseListObservable,
         AngularFire} from 'angularfire2';
 import {Person} from '../../../models/person';
-import {AuthResult} from '../../welcome/authResult';
+import {AuthResult} from '../../../models/authResult';
 
 import {AccountService} from '../../../services/account.service';
-import {ImmunizationComponent} from '../../immunization/immunization.component';
+import {ImmunizationComponent} from '../../+immunization/immunization.component';
 
 import {MdButton} from '@angular2-material/button';
 import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
@@ -37,7 +37,7 @@ export class PersonDetailComponent implements OnInit, OnDestroy {
   private upcoming$: FirebaseListObservable<any[]>;
   private completed$: FirebaseListObservable<any[]>;
   private params: Subscription;
-  
+
   constructor(
     private accountSvc: AccountService,
     private af: AngularFire,

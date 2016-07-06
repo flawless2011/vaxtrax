@@ -11,7 +11,7 @@ import {MD_SIDENAV_DIRECTIVES, MdSidenav} from '@angular2-material/sidenav';
 import {AccountService} from '../../services/account.service';
 
 import {Account} from '../../models/account';
-import {AuthResult} from '../welcome/authResult';
+import {AuthResult} from '../../models/authResult';
 
 @Component({
   moduleId: module.id,

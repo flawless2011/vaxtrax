@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {AngularFire, FirebaseObjectObservable} from 'angularfire2';
-import {AuthResult} from '../components/welcome/authResult';
+import {AuthResult} from '../models/authResult';
 import {Account} from '../models/account';
 
 @Injectable()
