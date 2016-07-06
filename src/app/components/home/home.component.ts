@@ -29,20 +29,20 @@ import {AuthResult} from '../welcome/authResult';
   providers: [MdIconRegistry]
 })
 export class HomeComponent implements OnInit {
-  public account: FirebaseObjectObservable<Account>;
-  public family: FirebaseListObservable<any[]>;
-  public selectedPerson: string;
+  account: FirebaseObjectObservable<Account>;
+  family: FirebaseListObservable<any[]>;
+  selectedPerson: string;
 
   constructor(
     private af: AngularFire,
     private accountSvc: AccountService,
     private router: Router) {}
 
-  public ngOnInit() {
+  ngOnInit() {
     this.af.auth.subscribe(authState => this.addOrFetchAccount(authState));
   }
 
-  public personSelected(id: string, sideNav: MdSidenav) {
+  personSelected(id: string, sideNav: MdSidenav) {
     sideNav.close();
     this.selectedPerson = id;
     this.router.navigate(['/home', this.selectedPerson]);

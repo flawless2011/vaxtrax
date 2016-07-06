@@ -29,14 +29,15 @@ import {MdIcon, MdIconRegistry} from '@angular2-material/icon';
   providers: [MdIconRegistry]
 })
 export class PersonDetailComponent implements OnInit, OnDestroy {
+  person: Person;
+  showAddImmunization: boolean = false;
+
   private personId: string;
   private person$: FirebaseObjectObservable<any>;
   private upcoming$: FirebaseListObservable<any[]>;
   private completed$: FirebaseListObservable<any[]>;
   private params: Subscription;
-  public person: Person;
-  public showAddImmunization: boolean = false;
-
+  
   constructor(
     private accountSvc: AccountService,
     private af: AngularFire,
@@ -55,11 +56,11 @@ export class PersonDetailComponent implements OnInit, OnDestroy {
     this.params.unsubscribe();
   }
 
-  public onAddImmunizationClick(): void {
+  onAddImmunizationClick() {
     this.showAddImmunization = true;
   }
 
-  public onAddImmunizationEvent(): void {
+  onAddImmunizationEvent() {
     this.showAddImmunization = false;
   }
 

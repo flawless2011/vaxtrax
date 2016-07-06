@@ -21,20 +21,19 @@ export class WelcomeComponent implements AfterContentInit {
     private router: Router,
     private af: AngularFire) {}
 
-  public onSignin = (auth: any): void => {
+  ngAfterContentInit(): void {
+    // this.onRender();
+    this.af.auth.subscribe(auth => this.onSignin(auth));
+  }
+
+  login = (): void => {
+    this.af.auth.login();
+  };
+
+  private onSignin = (auth: any): void => {
     console.log(auth);
     if (auth && AuthProviders.Google === auth.provider) {
       this.router.navigate(['/home', 0]);
     }
   };
-
-  public ngAfterContentInit(): void {
-    // this.onRender();
-    this.af.auth.subscribe(auth => this.onSignin(auth));
-  }
-
-  public login = (): void => {
-    this.af.auth.login();
-  };
-
 }

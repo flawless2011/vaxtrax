@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {NgForm} from '@angular/common';
+import {NgForm} from '@angular/forms';
 import {Router} from '@angular/router';
 
 import {FirebaseListObservable, AngularFire} from 'angularfire2';
@@ -31,13 +31,13 @@ import {Person} from '../../../models/person';
   providers: [MdUniqueSelectionDispatcher, MdIconRegistry]
 })
 export class PersonAddComponent implements OnInit {
-  private family$: FirebaseListObservable<any[]>;
-
-  public person: Person = {
+  person: Person = {
     firstName: '',
     lastName: '',
     relationship: ''
   };
+
+  private family$: FirebaseListObservable<any[]>;
 
   constructor(
     private accountSvc: AccountService,
@@ -49,11 +49,11 @@ export class PersonAddComponent implements OnInit {
     this.af.auth.subscribe(authState => this.finishAuthLoad(authState));
   }
 
-  public cancelAdd(): void {
+  cancelAdd() {
     this.router.navigate(['/home']);
   }
 
-  public onSubmit(): void {
+  onSubmit() {
     if (!this.person.imageUrl) {
       this.person.imageUrl = './assets/defaultPerson.png';
     }

@@ -5,13 +5,13 @@ import {Account} from '../models/account';
 
 @Injectable()
 export class AccountService {
+  accountUri: string;
 
-  public accountUri: string;
   private account: FirebaseObjectObservable<Account>;
 
   constructor (private af: AngularFire) {}
 
-  public addOrFetchAccount = (authResult: AuthResult): FirebaseObjectObservable<Account> => {
+  addOrFetchAccount = (authResult: AuthResult): FirebaseObjectObservable<Account> => {
     this.accountUri = '/account/' + authResult.loginId;
     if (this.account) {
       return this.account;

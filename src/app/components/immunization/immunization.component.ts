@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Input, Output} from '@angular/core';
-import {NgForm} from '@angular/common';
+import {NgForm} from '@angular/forms';
 
 import {MdUniqueSelectionDispatcher} from '@angular2-material/core';
 import {MdButton} from '@angular2-material/button';
@@ -28,16 +28,16 @@ import {Immunization} from '../../models/immunization';
 })
 export class ImmunizationComponent implements OnInit {
   @Input('personId') personId: string;
-  private upcoming$: FirebaseListObservable<any[]>;
   @Output() addImmunizationEvent = new EventEmitter<boolean>();
-
-  public immunization: Immunization = {
+  immunization: Immunization = {
     name: '',
     type: '',
     scheduledDate: new Date(),
     dosageValue: 0,
     dosageUnit: ''
   };
+
+  private upcoming$: FirebaseListObservable<any[]>;
 
   constructor(
     private af: AngularFire,
