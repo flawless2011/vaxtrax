@@ -2,7 +2,7 @@
   <md-sidenav #sidenav mode="over">
     <md-nav-list>
       <h3 md-subheader>My Family</h3>
-      <a md-list-item *ngFor="let person of family | async" (click)=personSelected(person.$key,sidenav)>
+      <a md-list-item *ngFor="let person of family$ | async" (click)=personSelected(person.$key,sidenav)>
         <img md-list-avatar [src]="person.imageUrl" [alt]="person.firstName" />
         <h3 md-line>{{person.firstName}} {{person.lastName}} ({{person.relationship}})</h3>
       </a>
@@ -16,7 +16,7 @@
     </button>
     <span>Vaxtrax</span>
     <span class="toolbar-fill-remaining"></span>
-    <span *ngIf="(account | async)">Welcome {{(account | async)?.family[0].firstName}}!</span>
+    <span *ngIf="(account$ | async)">Welcome {{(account$ | async)?.family[0].firstName}}!</span>
   </md-toolbar>
   <router-outlet></router-outlet>
 </md-sidenav-layout>
