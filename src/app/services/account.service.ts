@@ -1,6 +1,6 @@
-import { Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
-import { AngularFire, FirebaseObjectObservable} from 'angularfire2';
+import { AngularFire, FirebaseObjectObservable } from 'angularfire2';
 
 import { AuthResult, Account } from '../models';
 

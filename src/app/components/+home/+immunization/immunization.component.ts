@@ -27,7 +27,7 @@ import { Immunization } from '../../../models';
   providers: [MdUniqueSelectionDispatcher]
 })
 export class ImmunizationComponent implements OnInit {
-  @Input('personId') personId: string;
+  @Input() personId: string;
   @Output() addImmunizationEvent = new EventEmitter<boolean>();
   immunization: Immunization = {
     name: '',
