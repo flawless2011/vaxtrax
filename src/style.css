@@ -34,3 +34,9 @@ header, main, footer {
   margin-right: auto;
   margin-top: 100px;
 }
+
+@media only screen and (max-width: 540px) {
+  .hide-phone {
+    display: none;
+  }
+}

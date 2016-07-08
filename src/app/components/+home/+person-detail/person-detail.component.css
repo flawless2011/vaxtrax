@@ -40,6 +40,7 @@ md-card {
 
 .vax-card-header md-card-title {
   flex-grow: 1;
+  align-self: center;
 }
 
 .vax-card-header button {
@@ -47,4 +48,29 @@ md-card {
   position: absolute;
   right: -15px;
   top: -10px;
+}
+
+.vax-row {
+  display: flex;
+  flex-flow: row wrap;
+  margin-left: 25px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.vax-row > h4,p {
+  flex-grow: 1;
+  width: 100px;
+  white-space: normal;
+}
+
+.vax-none {
+  margin-left: 10px;
+}
+
+.avatar-image {
+  width: 80px;
+  height: auto;
+  border-radius: 40px;
+  vertical-align: middle;
 }
