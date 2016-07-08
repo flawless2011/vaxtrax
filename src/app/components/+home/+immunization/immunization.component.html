@@ -1,6 +1,6 @@
 <div class="form">
   <md-card>
-    <form #immForm="ngForm" (ngSubmit)="onSubmit()">
+    <form #immForm="ngForm">
     <md-card-title>Add immunization to schedule</md-card-title>
     <md-card-content>
         <md-input placeholder="Name" [(ngModel)]="immunization.name" name="name" type="text" ></md-input>
@@ -14,7 +14,7 @@
     </md-card-content>
     <md-card-actions align="end">
       <button md-raised-button color="accent" (click)="onCancel()">CANCEL</button>
-      <button md-raised-button color="accent" type="submit">ADD</button>
+      <button md-raised-button color="accent" (click)="onSubmit(immForm.value)">ADD</button>
     </md-card-actions>
   </form>
   </md-card>

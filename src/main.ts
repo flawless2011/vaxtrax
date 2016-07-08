@@ -1,12 +1,14 @@
 import { bootstrap } from '@angular/platform-browser-dynamic';
 import { enableProdMode } from '@angular/core';
 import { disableDeprecatedForms, provideForms } from '@angular/forms';
-import { VaxtraxAppComponent, environment, APP_ROUTER_PROVIDERS } from './app/components/app/';
+
 import { FIREBASE_PROVIDERS,
-  defaultFirebase,
-  AuthMethods,
-  AuthProviders,
-  firebaseAuthConfig } from 'angularfire2';
+         defaultFirebase,
+         AuthMethods,
+         AuthProviders,
+         firebaseAuthConfig } from 'angularfire2';
+
+import { VaxtraxAppComponent, environment, APP_ROUTER_PROVIDERS } from './app/components/app/';
 import { AccountService } from './app/services/account.service';
 
 if (environment.production) {

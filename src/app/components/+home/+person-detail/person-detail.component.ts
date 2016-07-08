@@ -1,19 +1,18 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
-import {ActivatedRoute, Router} from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
 
-import {FirebaseObjectObservable,
-        FirebaseListObservable,
-        AngularFire} from 'angularfire2';
-import {Person} from '../../../models/person';
-import {AuthResult} from '../../../models/authResult';
+import { FirebaseObjectObservable,
+         FirebaseListObservable,
+         AngularFire } from 'angularfire2';
 
-import {AccountService} from '../../../services/account.service';
-import {ImmunizationComponent} from '../../+immunization/immunization.component';
+import { MdButton } from '@angular2-material/button';
+import { MD_CARD_DIRECTIVES } from '@angular2-material/card';
+import { MdIcon, MdIconRegistry } from '@angular2-material/icon';
 
-import {MdButton} from '@angular2-material/button';
-import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
-import {MdIcon, MdIconRegistry} from '@angular2-material/icon';
+import { Person, AuthResult } from '../../../models';
+import { AccountService } from '../../../services/account.service';
+import { ImmunizationComponent } from '../+immunization/immunization.component';
 
 @Component({
   moduleId: module.id,
@@ -60,7 +59,7 @@ export class PersonDetailComponent implements OnInit, OnDestroy {
     this.showAddImmunization = true;
   }
 
-  onAddImmunizationEvent() {
+  onAddImmunizationEvent($event: boolean) {
     this.showAddImmunization = false;
   }
 

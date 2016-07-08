@@ -1,5 +1,6 @@
 import {Component, AfterContentInit} from '@angular/core';
 import {Router} from '@angular/router';
+
 import {AngularFire, AuthProviders} from 'angularfire2';
 
 import {MdButton} from '@angular2-material/button';

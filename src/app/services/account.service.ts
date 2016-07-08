@@ -1,7 +1,8 @@
-import {Injectable} from '@angular/core';
-import {AngularFire, FirebaseObjectObservable} from 'angularfire2';
-import {AuthResult} from '../models/authResult';
-import {Account} from '../models/account';
+import { Injectable} from '@angular/core';
+
+import { AngularFire, FirebaseObjectObservable} from 'angularfire2';
+
+import { AuthResult, Account } from '../models';
 
 @Injectable()
 export class AccountService {
@@ -23,7 +24,7 @@ export class AccountService {
       relationship: 'me',
       imageUrl: authResult.imageUrl
     };
-    const newAccount = {loginId: authResult.loginId,
+    let newAccount = {loginId: authResult.loginId,
                         loginSystem: authResult.loginSystem,
                         email: authResult.email,
                         family: [myself]};

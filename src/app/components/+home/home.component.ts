@@ -1,17 +1,18 @@
-import {Component, OnInit} from '@angular/core';
-import {Router, ROUTER_DIRECTIVES} from '@angular/router';
-import {AngularFire,
-        FirebaseObjectObservable,
-        FirebaseListObservable} from 'angularfire2';
-import {MdToolbar} from '@angular2-material/toolbar';
-import {MdIcon, MdIconRegistry} from '@angular2-material/icon';
-import {MdButton} from '@angular2-material/button';
-import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
-import {MD_SIDENAV_DIRECTIVES, MdSidenav} from '@angular2-material/sidenav';
-import {AccountService} from '../../services/account.service';
+import { Component, OnInit } from '@angular/core';
+import { Router, ROUTER_DIRECTIVES } from '@angular/router';
 
-import {Account} from '../../models/account';
-import {AuthResult} from '../../models/authResult';
+import { AngularFire,
+         FirebaseObjectObservable,
+         FirebaseListObservable } from 'angularfire2';
+
+import { MdToolbar } from '@angular2-material/toolbar';
+import { MdIcon, MdIconRegistry } from '@angular2-material/icon';
+import { MdButton } from '@angular2-material/button';
+import { MD_LIST_DIRECTIVES } from '@angular2-material/list';
+import { MD_SIDENAV_DIRECTIVES, MdSidenav } from '@angular2-material/sidenav';
+
+import { AccountService } from '../../services/account.service';
+import { Account, AuthResult } from '../../models';
 
 @Component({
   moduleId: module.id,
@@ -29,8 +30,8 @@ import {AuthResult} from '../../models/authResult';
   providers: [MdIconRegistry]
 })
 export class HomeComponent implements OnInit {
-  account: FirebaseObjectObservable<Account>;
-  family: FirebaseListObservable<any[]>;
+  account$: FirebaseObjectObservable<Account>;
+  family$: FirebaseListObservable<any[]>;
   selectedPerson: string;
 
   constructor(
@@ -68,7 +69,7 @@ export class HomeComponent implements OnInit {
       imageUrl: authUser.auth.photoURL,
       loginSystem: 'Google'
     };
-    this.account = this.accountSvc.addOrFetchAccount(authResult);
-    this.family = this.af.database.list(this.accountSvc.accountUri + '/family');
+    this.account$ = this.accountSvc.addOrFetchAccount(authResult);
+    this.family$ = this.af.database.list(this.accountSvc.accountUri + '/family');
   }
 }

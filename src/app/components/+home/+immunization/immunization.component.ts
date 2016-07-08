@@ -1,16 +1,16 @@
-import {Component, EventEmitter, OnInit, Input, Output} from '@angular/core';
-import {NgForm} from '@angular/forms';
+import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
-import {MdUniqueSelectionDispatcher} from '@angular2-material/core';
-import {MdButton} from '@angular2-material/button';
-import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
-import {MdInput} from '@angular2-material/input';
-import {MdRadioButton, MdRadioGroup} from '@angular2-material/radio';
+import { MdUniqueSelectionDispatcher } from '@angular2-material/core';
+import { MdButton } from '@angular2-material/button';
+import { MD_CARD_DIRECTIVES } from '@angular2-material/card';
+import { MdInput } from '@angular2-material/input';
+import { MdRadioButton, MdRadioGroup } from '@angular2-material/radio';
 
-import {FirebaseListObservable, AngularFire} from 'angularfire2';
+import { FirebaseListObservable, AngularFire } from 'angularfire2';
 
-import {AccountService} from '../../services/account.service';
-import {Immunization} from '../../models/immunization';
+import { AccountService } from '../../../services/account.service';
+import { Immunization } from '../../../models';
 
 @Component({
   moduleId: module.id,
@@ -33,7 +33,7 @@ export class ImmunizationComponent implements OnInit {
     name: '',
     type: '',
     scheduledDate: new Date(),
-    dosageValue: 0,
+    dosageValue: null,
     dosageUnit: ''
   };
 
@@ -50,16 +50,17 @@ export class ImmunizationComponent implements OnInit {
     this.upcoming$.subscribe(upcoming => this.upcomingWatcher(upcoming));
   }
 
-  upcomingWatcher(upcoming) {
-    console.log(upcoming);
-  }
-
   onCancel() {
     this.addImmunizationEvent.emit(false);
   }
 
-  onSubmit() {
-    this.upcoming$.push(this.immunization);
+  onSubmit(immunization: Immunization) {
+    this.upcoming$.push(immunization);
     this.addImmunizationEvent.emit(true);
   }
+
+  private upcomingWatcher(upcoming) {
+    console.log(upcoming);
+  }
+
 }

@@ -1,19 +1,18 @@
-import {Component, OnInit} from '@angular/core';
-import {NgForm} from '@angular/forms';
-import {Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
-import {FirebaseListObservable, AngularFire} from 'angularfire2';
+import { FirebaseListObservable, AngularFire } from 'angularfire2';
 
-import {MdUniqueSelectionDispatcher} from '@angular2-material/core';
-import {MdButton} from '@angular2-material/button';
-import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
-import {MdInput} from '@angular2-material/input';
-import {MdIcon, MdIconRegistry} from '@angular2-material/icon';
-import {MdRadioButton, MdRadioGroup} from '@angular2-material/radio';
+import { MdUniqueSelectionDispatcher } from '@angular2-material/core';
+import { MdButton } from '@angular2-material/button';
+import { MD_CARD_DIRECTIVES } from '@angular2-material/card';
+import { MdInput } from '@angular2-material/input';
+import { MdIcon, MdIconRegistry } from '@angular2-material/icon';
+import { MdRadioButton, MdRadioGroup } from '@angular2-material/radio';
 
-import {AccountService} from '../../../services/account.service';
-import {AuthResult} from '../../../models/authResult';
-import {Person} from '../../../models/person';
+import { AccountService } from '../../../services/account.service';
+import { AuthResult, Person } from '../../../models';
 
 @Component({
   moduleId: module.id,

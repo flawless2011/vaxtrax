@@ -1,4 +1,4 @@
-import {Immunization} from './immunization';
+import { Immunization } from './immunization';
 
 export interface Person {
   firstName: string;
