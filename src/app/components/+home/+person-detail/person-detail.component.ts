@@ -32,6 +32,7 @@ export class PersonDetailComponent implements OnInit, OnDestroy {
   showAddImmunization: boolean = false;
 
   private personId: string;
+  private immunizationId: string;
   private person$: FirebaseObjectObservable<any>;
   private upcoming$: FirebaseListObservable<any[]>;
   private completed$: FirebaseListObservable<any[]>;
@@ -53,6 +54,11 @@ export class PersonDetailComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.params.unsubscribe();
+  }
+
+  onImmunizationItemClick($key: string) {
+    this.immunizationId = $key;
+    this.showAddImmunization = true;
   }
 
   onAddImmunizationClick() {

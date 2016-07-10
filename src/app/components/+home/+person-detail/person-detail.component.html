@@ -1,5 +1,5 @@
-<add-immunization [personId]="personId" (addImmunizationEvent)="onAddImmunizationEvent($event)" *ngIf="showAddImmunization"></add-immunization>
-<div class="vax-card" *ngIf="person">
+<add-immunization [personId]="personId" [immId]="immunizationId" (addImmunizationEvent)="onAddImmunizationEvent($event)" *ngIf="showAddImmunization"></add-immunization>
+<div class="vax-card" *ngIf="person && !showAddImmunization">
   <md-card>
     <div class="vax-card-header">
       <md-card-title><img class="avatar-image" [src]="person.imageUrl" /> {{person.firstName}} {{person.lastName}} ({{person.relationship}})</md-card-title>
@@ -18,7 +18,7 @@
             <h4>Scheduled Date</h4>
           </div>
         </md-list-item>
-        <md-list-item *ngFor="let upcomingVax of upcoming$ | async">
+        <md-list-item *ngFor="let upcomingVax of upcoming$ | async" (click)="onImmunizationItemClick(upcomingVax.$key)">
           <div md-line class="vax-row">
             <p>{{upcomingVax.name}}</p>
             <p class="hide-phone">{{upcomingVax.type}}</p>

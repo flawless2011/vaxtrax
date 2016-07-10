@@ -1,4 +1,10 @@
-import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
+import { Component,
+         EventEmitter,
+         SimpleChanges,
+         OnChanges,
+         OnInit,
+         Input,
+         Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { MdUniqueSelectionDispatcher } from '@angular2-material/core';
@@ -7,7 +13,9 @@ import { MD_CARD_DIRECTIVES } from '@angular2-material/card';
 import { MdInput } from '@angular2-material/input';
 import { MdRadioButton, MdRadioGroup } from '@angular2-material/radio';
 
-import { FirebaseListObservable, AngularFire } from 'angularfire2';
+import { FirebaseListObservable,
+         FirebaseObjectObservable,
+         AngularFire } from 'angularfire2';
 
 import { AccountService } from '../../../services/account.service';
 import { Immunization } from '../../../models';
@@ -26,8 +34,9 @@ import { Immunization } from '../../../models';
   ],
   providers: [MdUniqueSelectionDispatcher]
 })
-export class ImmunizationComponent implements OnInit {
+export class ImmunizationComponent implements OnInit, OnChanges {
   @Input() personId: string;
+  @Input() immId: string;
   @Output() addImmunizationEvent = new EventEmitter<boolean>();
   immunization: Immunization = {
     name: '',
@@ -38,11 +47,19 @@ export class ImmunizationComponent implements OnInit {
   };
 
   private upcoming$: FirebaseListObservable<any[]>;
+  private immunization$: FirebaseObjectObservable<any>;
 
   constructor(
     private af: AngularFire,
     private accountSvc: AccountService
   ) {}
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['immId'] && changes['immId'].currentValue) {
+      this.immunization$ = this.af.database.object(this.accountSvc.accountUri + '/family/' + this.personId + '/upcoming/' + this.immId);
+      this.immunization$.subscribe(immunization => this.initImmunization(immunization));
+    }
+  }
 
   ngOnInit() {
     this.upcoming$ = this.af.database
@@ -54,8 +71,12 @@ export class ImmunizationComponent implements OnInit {
     this.addImmunizationEvent.emit(false);
   }
 
-  onSubmit(immunization: Immunization) {
-    this.upcoming$.push(immunization);
+  onSubmit() {
+    if (this.immId) {
+      this.immunization$.update(this.immunization);
+    } else {
+      this.upcoming$.push(this.immunization);
+    }
     this.addImmunizationEvent.emit(true);
   }
 
@@ -63,4 +84,9 @@ export class ImmunizationComponent implements OnInit {
     console.log(upcoming);
   }
 
+  private initImmunization(immunization: any) {
+    immunization.id = immunization.$key;
+    delete immunization.$key; // Get rid of field that Firebase doesn't like apparently
+    this.immunization = immunization;
+  }
 }

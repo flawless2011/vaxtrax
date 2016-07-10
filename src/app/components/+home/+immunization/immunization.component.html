@@ -1,21 +1,21 @@
 <div class="form">
   <md-card>
     <form #immForm="ngForm">
-    <md-card-title>Add immunization to schedule</md-card-title>
-    <md-card-content>
-        <md-input placeholder="Name" [(ngModel)]="immunization.name" name="name" type="text" ></md-input>
-        <md-input placeholder="Type" [(ngModel)]="immunization.type" name="type" type="text"></md-input>
-        <md-input placeholder="Dosage Amount" [(ngModel)]="immunization.dosageValue" name="dosageValue" type="number"></md-input>
-        <md-radio-group [(ngModel)]="immunization.dosageUnit" name="dosageUnit">
-          <md-radio-button value="ml">ml</md-radio-button>
-          <md-radio-button value="cc">cm<sup>3</sup></md-radio-button>
-        </md-radio-group>
-        <md-input placeholder="Scheduled Date" [(ngModel)]="immunization.scheduledDate" name="scheduledDate" type="date"></md-input>
-    </md-card-content>
-    <md-card-actions align="end">
-      <button md-raised-button color="accent" (click)="onCancel()">CANCEL</button>
-      <button md-raised-button color="accent" (click)="onSubmit(immForm.value)">ADD</button>
-    </md-card-actions>
-  </form>
+      <md-card-title>{{immId ? 'Edit' : 'Add'}} immunization</md-card-title>
+      <md-card-content>
+          <md-input placeholder="Name" [(ngModel)]="immunization.name" name="name" type="text"></md-input>
+          <md-input placeholder="Type" [(ngModel)]="immunization.type" name="type" type="text"></md-input>
+          <md-input placeholder="Dosage Amount" [(ngModel)]="immunization.dosageValue" name="dosageValue" type="number"></md-input>
+          <md-radio-group [(ngModel)]="immunization.dosageUnit" name="dosageUnit">
+            <md-radio-button value="ml">ml</md-radio-button>
+            <md-radio-button value="cc">cm<sup>3</sup></md-radio-button>
+          </md-radio-group>
+          <md-input placeholder="Scheduled Date" [(ngModel)]="immunization.scheduledDate" name="scheduledDate" type="date"></md-input>
+      </md-card-content>
+      <md-card-actions align="end">
+        <button md-raised-button color="accent" type="button" (click)="onCancel()">CANCEL</button>
+        <button md-raised-button color="accent" type="button" (click)="onSubmit()">{{immId ? 'EDIT' : 'ADD'}}</button>
+      </md-card-actions>
+    </form>
   </md-card>
 </div>
