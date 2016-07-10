@@ -12,7 +12,7 @@ export const HomeRoutes: RouterConfig = [
       {
         path: '',
         redirectTo: '/home/0',
-        terminal: true
+        pathMatch: 'full'
       },
       {
         path: 'add',

@@ -40,6 +40,7 @@ export class HomeComponent implements OnInit {
     private router: Router) {}
 
   ngOnInit() {
+    // Not sure this is needed since we redirect to /home/0 if no personId provided
     this.af.auth.subscribe(authState => this.addOrFetchAccount(authState));
   }
 
@@ -50,8 +51,9 @@ export class HomeComponent implements OnInit {
   }
 
   private addOrFetchAccount(authUser: any): void {
+    // TODO this all should probably go into a route guard at some point
     if (!authUser || !authUser.auth) {
-      this.router.navigate(['']);
+      this.router.navigate(['/welcome']);
       return;
     }
 

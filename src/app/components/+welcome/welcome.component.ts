@@ -1,4 +1,4 @@
-import {Component, AfterContentInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
 import {AngularFire, AuthProviders} from 'angularfire2';
@@ -16,14 +16,13 @@ import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
     MD_CARD_DIRECTIVES
   ]
 })
-export class WelcomeComponent implements AfterContentInit {
+export class WelcomeComponent implements OnInit {
 
   constructor(
     private router: Router,
     private af: AngularFire) {}
 
-  ngAfterContentInit(): void {
-    // this.onRender();
+  ngOnInit(): void {
     this.af.auth.subscribe(auth => this.onSignin(auth));
   }
 

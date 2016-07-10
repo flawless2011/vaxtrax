@@ -1,10 +1,11 @@
 import { provideRouter } from '@angular/router';
-import { WelcomeComponent } from '../+welcome/welcome.component';
+
 import { HomeRoutes } from '../+home/home.routes';
+import { WelcomeRoutes } from '../+welcome/welcome.routes';
 
 export const routes = [
-  ...HomeRoutes,
-  {path: '', name: 'Welcome', component: WelcomeComponent, useAsDefault: true},
+  ...WelcomeRoutes,
+  ...HomeRoutes
 ];
 
 export const APP_ROUTER_PROVIDERS = [

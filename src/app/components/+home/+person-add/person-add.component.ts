@@ -61,8 +61,9 @@ export class PersonAddComponent implements OnInit {
   }
 
   private finishAuthLoad(authUser: any) {
+    // TODO this all should probably go into a route guard at some point
     if (!authUser || !authUser.auth) {
-      this.router.navigate(['']);
+      this.router.navigate(['/welcome']);
       return;
     }
 
