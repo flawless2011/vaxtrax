@@ -1,4 +1,7 @@
 {
+  "atom": {
+    "rewriteTsconfig": false
+  },
   "compileOnSave": false,
   "compilerOptions": {
     "declaration": false,
