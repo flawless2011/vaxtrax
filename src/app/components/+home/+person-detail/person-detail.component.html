@@ -11,7 +11,7 @@
       <md-list>
         <h3 md-subheader>Upcoming Vaccinations</h3>
         <md-list-item>
-          <div md-line class="vax-row" *ngIf="person.upcoming">
+          <div md-line class="vax-row vax-category" *ngIf="(upcoming$ | async)?.length > 0">
             <h4>Vaccine</h4>
             <h4 class="hide-phone">Type</h4>
             <h4 class="hide-phone">Dosage</h4>
@@ -26,28 +26,28 @@
             <p>{{upcomingVax.scheduledDate | date}}</p>
           </div>
         </md-list-item>
-        <p md-subheader class="vax-none" *ngIf="!person.upcoming">
+        <p md-subheader class="vax-none" *ngIf="(upcoming$ | async)?.length === 0">
           NONE
         </p>
         <md-divider></md-divider>
         <h3 md-subheader>Completed Vaccinations</h3>
         <md-list-item>
-          <div md-line class="vax-row" *ngIf="person.completed">
+          <div md-line class="vax-row" *ngIf="(completed$ | async)?.length > 0">
             <h4>Vaccine</h4>
             <h4 class="hide-phone">Type</h4>
             <h4 class="hide-phone">Dosage</h4>
             <h4>Completed Date</h4>
           </div>
         </md-list-item>
-        <md-list-item *ngFor="let vax of completed$ | async">
-          <div md-line>
+        <md-list-item *ngFor="let vax of completed$ | async" (click)="onImmunizationItemClick(vax.$key)">
+          <div md-line class="vax-row">
             <p>{{vax.name}}</p>
             <p class="hide-phone">{{vax.type}}</p>
             <p class="hide-phone">{{vax.dosageValue}}/{{vax.dosageUnit}}</p>
             <p>{{vax.completedDate | date}}</p>
           </div>
         </md-list-item>
-        <p md-subheader class="vax-none" *ngIf="!person.completed">
+        <p md-subheader class="vax-none" *ngIf="(completed$ | async)?.length === 0">
           NONE
         </p>
       </md-list>

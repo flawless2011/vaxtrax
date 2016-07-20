@@ -7,6 +7,5 @@ export interface Person {
   $key?: string;
   gender?: string;
   imageUrl?: string;
-  completed?: Immunization[];
-  upcoming?: Immunization[];
+  vaccinations?: Immunization[];
 }

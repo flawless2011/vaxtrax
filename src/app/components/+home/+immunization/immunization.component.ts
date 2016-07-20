@@ -56,14 +56,14 @@ export class ImmunizationComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['immId'] && changes['immId'].currentValue) {
-      this.immunization$ = this.af.database.object(this.accountSvc.accountUri + '/family/' + this.personId + '/upcoming/' + this.immId);
+      this.immunization$ = this.af.database.object(this.accountSvc.accountUri + '/family/' + this.personId + '/vaccinations/' + this.immId);
       this.immunization$.subscribe(immunization => this.initImmunization(immunization));
     }
   }
 
   ngOnInit() {
     this.upcoming$ = this.af.database
-      .list(this.accountSvc.accountUri + '/family/' + this.personId + '/upcoming');
+      .list(this.accountSvc.accountUri + '/family/' + this.personId + '/vaccinations');
     this.upcoming$.subscribe(upcoming => this.upcomingWatcher(upcoming));
   }
 

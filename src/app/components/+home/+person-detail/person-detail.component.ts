@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
+import { Observable } from 'rxjs/Observable';
 
 import { FirebaseObjectObservable,
          FirebaseListObservable,
@@ -10,7 +11,7 @@ import { MdButton } from '@angular2-material/button';
 import { MD_CARD_DIRECTIVES } from '@angular2-material/card';
 import { MdIcon, MdIconRegistry } from '@angular2-material/icon';
 
-import { Person, AuthResult } from '../../../models';
+import { Person, AuthResult, Immunization } from '../../../models';
 import { AccountService } from '../../../services/account.service';
 import { ImmunizationComponent } from '../+immunization/immunization.component';
 
@@ -30,12 +31,12 @@ import { ImmunizationComponent } from '../+immunization/immunization.component';
 export class PersonDetailComponent implements OnInit, OnDestroy {
   person: Person;
   showAddImmunization: boolean = false;
+  upcoming$: Observable<Immunization[]>;
+  completed$: Observable<Immunization[]>;
 
   private personId: string;
   private immunizationId: string;
   private person$: FirebaseObjectObservable<any>;
-  private upcoming$: FirebaseListObservable<any[]>;
-  private completed$: FirebaseListObservable<any[]>;
   private params: Subscription;
 
   constructor(
@@ -98,7 +99,13 @@ export class PersonDetailComponent implements OnInit, OnDestroy {
     this.person$ = this.af.database
       .object(this.accountSvc.accountUri + '/family/' + this.personId);
     this.person$.subscribe(person => this.person = person);
-    this.upcoming$ = this.af.database.list(this.accountSvc.accountUri + '/family/' + this.personId + '/upcoming');
-    this.completed$ = this.af.database.list(this.accountSvc.accountUri + '/family/' + this.personId + '/completed');
+    this.upcoming$ = this.af.database.list(this.accountSvc.accountUri + '/family/' + this.personId + '/vaccinations')
+      .map(vaccinations => {
+        return vaccinations.filter(vaccination => !vaccination.completedDate)
+      });
+    this.completed$ = this.af.database.list(this.accountSvc.accountUri + '/family/' + this.personId + '/vaccinations')
+      .map(vaccinations => {
+        return vaccinations.filter(vaccination => vaccination.completedDate)
+      });
   }
 }
