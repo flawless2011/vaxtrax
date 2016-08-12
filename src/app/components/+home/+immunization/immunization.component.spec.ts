@@ -1,12 +1,9 @@
 import {
-  beforeEach,
-  beforeEachProviders,
-  describe,
-  expect,
-  it,
+  addProviders,
+  ComponentFixture,
+  TestComponentBuilder,
   inject,
 } from '@angular/core/testing';
-import { ComponentFixture, TestComponentBuilder } from '@angular/compiler/testing';
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { ImmunizationComponent } from './immunization.component';
@@ -14,7 +11,10 @@ import { ImmunizationComponent } from './immunization.component';
 describe('Component: Immunization', () => {
   let builder: TestComponentBuilder;
 
-  beforeEachProviders(() => [ImmunizationComponent]);
+  beforeEach(() => {
+    addProviders([ImmunizationComponent]);
+  });
+
   beforeEach(inject([TestComponentBuilder], function (tcb: TestComponentBuilder) {
     builder = tcb;
   }));
@@ -37,10 +37,9 @@ describe('Component: Immunization', () => {
 @Component({
   selector: 'test',
   template: `
-    <app-immunization></app-immunization>
+    <add-immunization></add-immunization>
   `,
   directives: [ImmunizationComponent]
 })
 class ImmunizationComponentTestController {
 }
-

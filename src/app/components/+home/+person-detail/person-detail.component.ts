@@ -98,14 +98,14 @@ export class PersonDetailComponent implements OnInit, OnDestroy {
   private fetchPerson() {
     this.person$ = this.af.database
       .object(this.accountSvc.accountUri + '/family/' + this.personId);
-    this.person$.subscribe(person => this.person = person);
+    this.person$.subscribe(person => this.person = person); // Investigate possible leak since not unsubscribing
     this.upcoming$ = this.af.database.list(this.accountSvc.accountUri + '/family/' + this.personId + '/vaccinations')
       .map(vaccinations => {
-        return vaccinations.filter(vaccination => !vaccination.completedDate)
+        return vaccinations.filter(vaccination => !vaccination.completedDate);
       });
     this.completed$ = this.af.database.list(this.accountSvc.accountUri + '/family/' + this.personId + '/vaccinations')
       .map(vaccinations => {
-        return vaccinations.filter(vaccination => vaccination.completedDate)
+        return vaccinations.filter(vaccination => vaccination.completedDate);
       });
   }
 }
