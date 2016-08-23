@@ -5,7 +5,6 @@ import { Component,
          OnInit,
          Input,
          Output } from '@angular/core';
-import { NgForm } from '@angular/forms';
 
 import { FirebaseListObservable,
          FirebaseObjectObservable,
