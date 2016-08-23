@@ -1,2 +1,3 @@
 export { WelcomeComponent } from './welcome.component';
-export { WelcomeRoutes } from './welcome.routes';
+export { welcomeRouting } from './welcome.routes';
+export { WelcomeModule } from './welcome.module';

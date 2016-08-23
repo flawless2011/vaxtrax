@@ -19,9 +19,13 @@
     "inlineSources": true
   },
 
+  "filesGlob": [
+    "app/**/*.ts"  
+  ],
+
   "files": [
     "main.ts",
     "typings.d.ts",
-    "node_modules/angularfire2/firebase3.d.ts"
+    "../node_modules/angularfire2/firebase3.d.ts"
   ]
 }

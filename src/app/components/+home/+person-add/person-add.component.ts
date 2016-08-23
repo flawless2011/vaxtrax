@@ -4,12 +4,7 @@ import { Router } from '@angular/router';
 
 import { FirebaseListObservable, AngularFire } from 'angularfire2';
 
-import { MdUniqueSelectionDispatcher } from '@angular2-material/core';
-import { MdButton } from '@angular2-material/button';
-import { MD_CARD_DIRECTIVES } from '@angular2-material/card';
-import { MdInput } from '@angular2-material/input';
-import { MdIcon, MdIconRegistry } from '@angular2-material/icon';
-import { MdRadioButton, MdRadioGroup } from '@angular2-material/radio';
+import { MdIconRegistry } from '@angular2-material/icon';
 
 import { AccountService } from '../../../services/account.service';
 import { AuthResult, Person } from '../../../models';
@@ -19,15 +14,7 @@ import { AuthResult, Person } from '../../../models';
   selector: 'person-add',
   templateUrl: 'person-add.component.html',
   styleUrls: ['person-add.component.css'],
-  directives: [
-    MD_CARD_DIRECTIVES,
-    MdButton,
-    MdInput,
-    MdIcon,
-    MdRadioButton,
-    MdRadioGroup
-  ],
-  providers: [MdUniqueSelectionDispatcher, MdIconRegistry]
+  viewProviders: [MdIconRegistry]
 })
 export class PersonAddComponent implements OnInit {
   person: Person = {

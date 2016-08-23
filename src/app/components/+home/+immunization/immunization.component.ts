@@ -7,12 +7,6 @@ import { Component,
          Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { MdUniqueSelectionDispatcher } from '@angular2-material/core';
-import { MdButton } from '@angular2-material/button';
-import { MD_CARD_DIRECTIVES } from '@angular2-material/card';
-import { MdInput } from '@angular2-material/input';
-import { MdRadioButton, MdRadioGroup } from '@angular2-material/radio';
-
 import { FirebaseListObservable,
          FirebaseObjectObservable,
          AngularFire } from 'angularfire2';
@@ -24,15 +18,7 @@ import { Immunization } from '../../../models';
   moduleId: module.id,
   selector: 'add-immunization',
   templateUrl: 'immunization.component.html',
-  styleUrls: ['immunization.component.css'],
-  directives: [
-    MD_CARD_DIRECTIVES,
-    MdButton,
-    MdInput,
-    MdRadioButton,
-    MdRadioGroup
-  ],
-  providers: [MdUniqueSelectionDispatcher]
+  styleUrls: ['immunization.component.css']
 })
 export class ImmunizationComponent implements OnInit, OnChanges {
   @Input() personId: string;

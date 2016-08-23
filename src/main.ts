@@ -1,37 +1,10 @@
-import { bootstrap } from '@angular/platform-browser-dynamic';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { enableProdMode } from '@angular/core';
-import { disableDeprecatedForms, provideForms } from '@angular/forms';
 
-import { FIREBASE_PROVIDERS,
-         defaultFirebase,
-         AuthMethods,
-         AuthProviders,
-         firebaseAuthConfig } from 'angularfire2';
-
-import { VaxtraxAppComponent, environment, APP_ROUTER_PROVIDERS } from './app/components/app/';
-import { AccountService } from './app/services/account.service';
+import { VaxtraxAppModule, environment} from './app/components/app/';
 
 if (environment.production) {
   enableProdMode();
 }
 
-bootstrap(VaxtraxAppComponent, [
-  disableDeprecatedForms(),
-  provideForms(),
-  APP_ROUTER_PROVIDERS,
-  FIREBASE_PROVIDERS,
-  defaultFirebase({
-    apiKey: '<YOUR_API_KEY>',
-    authDomain: '<YOUR_AUTH_DOMAIN>',
-    databaseURL: '<YOUR_FIREBASE_DB_URL>',
-    storageBucket: '<YOUR_STORAGE_BUCKET>'}),
-  firebaseAuthConfig({
-    provider: AuthProviders.Google,
-    method: AuthMethods.Popup,
-    scope: [
-      'https://www.googleapis.com/auth/userinfo.profile',
-      'https://www.googleapis.com/auth/plus.login'
-    ]
-  }),
-  AccountService
-]);
+platformBrowserDynamic().bootstrapModule(VaxtraxAppModule);

@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ROUTER_DIRECTIVES } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { AngularFire,
          FirebaseObjectObservable,
          FirebaseListObservable } from 'angularfire2';
 
-import { MdToolbar } from '@angular2-material/toolbar';
-import { MdIcon, MdIconRegistry } from '@angular2-material/icon';
-import { MdButton } from '@angular2-material/button';
-import { MD_LIST_DIRECTIVES } from '@angular2-material/list';
-import { MD_SIDENAV_DIRECTIVES, MdSidenav } from '@angular2-material/sidenav';
+import { MdIconRegistry } from '@angular2-material/icon';
+import { MdSidenav } from '@angular2-material/sidenav';
 
 import { AccountService } from '../../services/account.service';
 import { Account, AuthResult } from '../../models';
@@ -19,15 +16,7 @@ import { Account, AuthResult } from '../../models';
   selector: 'vaxtrax-home',
   templateUrl: 'home.component.html',
   styleUrls: ['home.component.css'],
-  directives: [
-    MD_LIST_DIRECTIVES,
-    MdToolbar,
-    MdIcon,
-    MdButton,
-    MD_SIDENAV_DIRECTIVES,
-    ROUTER_DIRECTIVES
-  ],
-  providers: [MdIconRegistry]
+  viewProviders: [MdIconRegistry]
 })
 export class HomeComponent implements OnInit {
   account$: FirebaseObjectObservable<Account>;

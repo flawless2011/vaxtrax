@@ -1,20 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
-import {AngularFire, AuthProviders} from 'angularfire2';
-
-import {MdButton} from '@angular2-material/button';
-import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
+import { AngularFire, AuthProviders } from 'angularfire2';
 
 @Component({
   moduleId: module.id,
   selector: 'vaxtrax-welcome',
   templateUrl: 'welcome.component.html',
-  styleUrls: ['welcome.component.css'],
-  directives: [
-    MdButton,
-    MD_CARD_DIRECTIVES
-  ]
+  styleUrls: ['welcome.component.css']
 })
 export class WelcomeComponent implements OnInit {
 

@@ -1,15 +1,17 @@
-import { RouterConfig } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 import { WelcomeComponent } from './';
 
-export const WelcomeRoutes: RouterConfig = [
+const welcomeRoutes: Routes = [
   {
     path: '',
     redirectTo: 'home',
-    pathMatch: "full"
+    pathMatch: 'full'
   },
   {
     path: 'welcome',
     component: WelcomeComponent
   }
 ];
+
+export const welcomeRouting = RouterModule.forChild(welcomeRoutes);

@@ -4,29 +4,19 @@ import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 
 import { FirebaseObjectObservable,
-         FirebaseListObservable,
          AngularFire } from 'angularfire2';
 
-import { MdButton } from '@angular2-material/button';
-import { MD_CARD_DIRECTIVES } from '@angular2-material/card';
-import { MdIcon, MdIconRegistry } from '@angular2-material/icon';
+import { MdIconRegistry } from '@angular2-material/icon';
 
-import { Person, AuthResult, Immunization } from '../../../models';
 import { AccountService } from '../../../services/account.service';
-import { ImmunizationComponent } from '../+immunization/immunization.component';
+import { Person, AuthResult, Immunization } from '../../../models';
 
 @Component({
   moduleId: module.id,
   selector: 'person-detail',
   templateUrl: 'person-detail.component.html',
   styleUrls: ['person-detail.component.css'],
-  directives: [
-    MD_CARD_DIRECTIVES,
-    MdButton,
-    MdIcon,
-    ImmunizationComponent
-  ],
-  providers: [MdIconRegistry]
+  viewProviders: [MdIconRegistry]
 })
 export class PersonDetailComponent implements OnInit, OnDestroy {
   person: Person;

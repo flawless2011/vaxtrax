@@ -1,12 +1,12 @@
-import { RouterConfig } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home.component';
 import { PersonDetailComponent } from './+person-detail/person-detail.component';
 import { PersonAddComponent } from './+person-add/person-add.component';
 
-export const HomeRoutes: RouterConfig = [
+export const homeRoutes: Routes = [
   {
-    path: 'home',
+    path: '',
     component: HomeComponent,
     children: [
       {
@@ -25,3 +25,5 @@ export const HomeRoutes: RouterConfig = [
     ]
   }
 ];
+
+export const homeRouting = RouterModule.forChild(homeRoutes);

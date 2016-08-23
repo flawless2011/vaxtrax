@@ -1,13 +1,14 @@
-import { provideRouter } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
-import { HomeRoutes } from '../+home/home.routes';
-import { WelcomeRoutes } from '../+welcome/welcome.routes';
-
-export const routes = [
-  ...WelcomeRoutes,
-  ...HomeRoutes
+export const routes: Routes = [
+  {
+    path: 'home',
+    loadChildren: 'app/components/+home/home.module#HomeModule'
+  }
 ];
 
-export const APP_ROUTER_PROVIDERS = [
-  provideRouter(routes)
+export const appRoutingProviders: any[] = [
+
 ];
+
+export const appRouting = RouterModule.forRoot(routes);
