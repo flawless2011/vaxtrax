@@ -14,7 +14,6 @@ import { AccountService } from '../../../services/account.service';
 import { Immunization } from '../../../models';
 
 @Component({
-  moduleId: module.id,
   selector: 'add-immunization',
   templateUrl: 'immunization.component.html',
   styleUrls: ['immunization.component.css']

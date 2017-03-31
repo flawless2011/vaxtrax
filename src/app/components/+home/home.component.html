@@ -1,4 +1,4 @@
-<md-sidenav-layout fullscreen>
+<md-sidenav-container fullscreen>
   <md-sidenav #sidenav mode="over">
     <md-nav-list>
       <h3 md-subheader>My Family</h3>
@@ -19,4 +19,4 @@
     <span *ngIf="(account$ | async)">Welcome {{(account$ | async)?.family[0].firstName}}!</span>
   </md-toolbar>
   <router-outlet></router-outlet>
-</md-sidenav-layout>
+</md-sidenav-container>

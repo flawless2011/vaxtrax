@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule  } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
+
+import 'hammerjs';
+import { MaterialModule } from '@angular/material';
 
 import { VaxtraxAppComponent } from './vaxtrax.component';
 import { appRouting, appRoutingProviders } from './vaxtrax.routes';
@@ -34,8 +38,10 @@ const firebaseAuthConfig = {
     declarations: [VaxtraxAppComponent],
     imports: [
       BrowserModule,
+      BrowserAnimationsModule,
       FormsModule,
       HttpModule,
+      MaterialModule,
       appRouting,
       WelcomeModule,
       HomeModule,

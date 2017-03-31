@@ -2,17 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { MdRippleModule } from '@angular2-material/core/ripple/ripple';
-import { MdButtonModule } from '@angular2-material/button';
-import { MdCardModule } from '@angular2-material/card';
-import { MdToolbarModule } from '@angular2-material/toolbar';
-import { MdCheckboxModule } from '@angular2-material/checkbox';
-import { MdRadioModule } from '@angular2-material/radio';
-import { MdSidenavModule } from '@angular2-material/sidenav';
-import { MdListModule } from '@angular2-material/list';
-import { MdIconModule } from '@angular2-material/icon';
-import { MdProgressCircleModule } from '@angular2-material/progress-circle';
-import { MdInputModule } from '@angular2-material/input';
+import { MdRippleModule } from '@angular/material';
+import { MdButtonModule } from '@angular/material';
+import { MdCardModule } from '@angular/material';
+import { MdToolbarModule } from '@angular/material';
+import { MdCheckboxModule } from '@angular/material';
+import { MdRadioModule } from '@angular/material';
+import { MdSidenavModule } from '@angular/material';
+import { MdListModule } from '@angular/material';
+import { MdIconModule } from '@angular/material';
+import { MdProgressCircleModule } from '@angular/material';
+import { MdInputModule } from '@angular/material';
 
 import { HomeComponent } from './home.component';
 import { homeRouting } from './home.routes';

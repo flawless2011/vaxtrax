@@ -4,7 +4,6 @@ import {Router} from '@angular/router';
 import { AngularFire, AuthProviders } from 'angularfire2';
 
 @Component({
-  moduleId: module.id,
   selector: 'vaxtrax-welcome',
   templateUrl: 'welcome.component.html',
   styleUrls: ['welcome.component.css']

@@ -3,16 +3,24 @@
     <form #personForm="ngForm" (ngSubmit)="onSubmit()">
       <md-card-title>Add person</md-card-title>
       <md-card-content>
-          <md-input placeholder="First Name" [(ngModel)]="person.firstName" name="firstName"></md-input>
-          <md-input placeholder="Last Name" [(ngModel)]="person.lastName" name="lastName"></md-input>
+          <md-input-container>
+            <input mdInput placeholder="First Name" [(ngModel)]="person.firstName" name="firstName">
+          </md-input-container>
+          <md-input-container>
+            <input mdInput placeholder="Last Name" [(ngModel)]="person.lastName" name="lastName">
+          </md-input-container>
           <md-radio-group [(ngModel)]="person.gender" name="gender">
             <md-radio-button value="Female">Female</md-radio-button>
             <md-radio-button value="Male">Male</md-radio-button>
             <md-radio-button value="Other">Other</md-radio-button>
           </md-radio-group>
-          <md-input placeholder="ImageURL" [(ngModel)]="person.imageUrl" name="imageUrl"></md-input>
+          <md-input-container>
+            <input mdInput placeholder="ImageURL" [(ngModel)]="person.imageUrl" name="imageUrl">
+          </md-input-container>
           <!-- TODO Implement this as md-select when available -->
-          <md-input placeholder="Relationship" [(ngModel)]="person.relationship" name="relationship"></md-input>
+          <md-input-container>
+            <input mdInput placeholder="Relationship" [(ngModel)]="person.relationship" name="relationship">
+          </md-input-container>
       </md-card-content>
       <md-card-actions align="end">
         <button md-raised-button color="accent" type="button" (click)="cancelAdd()">CANCEL</button>

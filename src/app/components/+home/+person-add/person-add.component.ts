@@ -3,13 +3,12 @@ import { Router } from '@angular/router';
 
 import { FirebaseListObservable, AngularFire } from 'angularfire2';
 
-import { MdIconRegistry } from '@angular2-material/icon';
+import { MdIconRegistry } from '@angular/material';
 
 import { AccountService } from '../../../services/account.service';
 import { AuthResult, Person } from '../../../models';
 
 @Component({
-  moduleId: module.id,
   selector: 'person-add',
   templateUrl: 'person-add.component.html',
   styleUrls: ['person-add.component.css'],

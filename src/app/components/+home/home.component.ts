@@ -5,14 +5,13 @@ import { AngularFire,
          FirebaseObjectObservable,
          FirebaseListObservable } from 'angularfire2';
 
-import { MdIconRegistry } from '@angular2-material/icon';
-import { MdSidenav } from '@angular2-material/sidenav';
+import { MdIconRegistry } from '@angular/material';
+import { MdSidenav } from '@angular/material';
 
 import { AccountService } from '../../services/account.service';
 import { Account, AuthResult } from '../../models';
 
 @Component({
-  moduleId: module.id,
   selector: 'vaxtrax-home',
   templateUrl: 'home.component.html',
   styleUrls: ['home.component.css'],

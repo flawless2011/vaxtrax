@@ -6,13 +6,12 @@ import { Observable } from 'rxjs/Observable';
 import { FirebaseObjectObservable,
          AngularFire } from 'angularfire2';
 
-import { MdIconRegistry } from '@angular2-material/icon';
+import { MdIconRegistry } from '@angular/material';
 
 import { AccountService } from '../../../services/account.service';
 import { Person, AuthResult, Immunization } from '../../../models';
 
 @Component({
-  moduleId: module.id,
   selector: 'person-detail',
   templateUrl: 'person-detail.component.html',
   styleUrls: ['person-detail.component.css'],
