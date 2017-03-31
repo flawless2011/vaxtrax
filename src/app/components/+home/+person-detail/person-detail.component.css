@@ -50,7 +50,7 @@ md-card {
   top: -10px;
 }
 
-.vax-row {
+div[md-line].vax-row  {
   display: flex;
   flex-flow: row wrap;
   margin-left: 25px;

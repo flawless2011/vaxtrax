@@ -19,10 +19,10 @@ import { AngularFireModule,
          AuthProviders } from 'angularfire2';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyCnCXQW9QXC5BNShYZtHT-VTLcqjJh3oHs',
-  authDomain: 'vaxtrax-1174.firebaseapp.com',
-  databaseURL: 'https://vaxtrax-1174.firebaseio.com',
-  storageBucket: 'vaxtrax-1174.appspot.com'
+  apiKey: '<YOUR_API_KEY>',
+  authDomain: '<YOUR_AUTH_DOMAIN>',
+  databaseURL: '<YOUR_FIREBASE_DB_URL>',
+  storageBucket: '<YOUR_STORAGE_BUCKET>'
 };
 
 const firebaseAuthConfig = {
